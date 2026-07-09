@@ -748,3 +748,162 @@ footer {
     .form-card { padding: 25px 20px; }
     .form-row { flex-direction: column; gap: 0; }
 }
+
+/* ==========================================================================
+   EXCLUSIVE PREMIUM MOBILE OPTIMIZATION LAYER (For Smartphones & Small Screens)
+   ========================================================================== */
+
+@media (max-width: 600px) {
+    
+    /* 1. TOP HEADER & LOGO ADJUSTMENTS */
+    header {
+        padding: 15px 10px; /* Thinner padding to save vertical space */
+    }
+    
+    .brand-container {
+        flex-direction: column;
+        text-align: center;
+        gap: 8px;
+    }
+    
+    .brand-logo {
+        height: 55px; /* Slightly smaller logo profile on phone screens */
+    }
+    
+    .brand-text h1 {
+        font-size: 22px !important; /* Prevents long titles from clipping or breaking */
+        letter-spacing: 1px;
+        text-align: center;
+    }
+    
+    .brand-subtitle {
+        font-size: 9px !important;
+        letter-spacing: 2px;
+        text-align: center;
+    }
+
+    /* 2. NAVIGATION BAR (Smooth Horizontal Thumb-Friendly Row) */
+    nav ul {
+        flex-direction: row !important; /* Keeps them side-by-side instead of stacking vertically */
+        justify-content: space-around;
+        padding: 0;
+        max-width: 100%;
+    }
+    
+    .nav-link {
+        padding: 14px 10px !important; /* Perfect thumb-tapping target size */
+        font-size: 11px !important; /* Fits all titles perfectly on small screens */
+        letter-spacing: 0.5px;
+    }
+    
+    .nav-link::after {
+        display: none; /* Removes the hover border underline on mobile to prevent layout shifting */
+    }
+
+    /* 3. HERO BANNER SLIDER OPTIMIZATION */
+    .hero-slider-wrapper {
+        height: 240px !important; /* Cuts the height in half so the form or content is visible below */
+        margin: 15px auto;
+        border-radius: 8px; /* Slightly tighter corner curves on mobile device edges */
+    }
+    
+    .hero-overlay-text {
+        padding: 20px 15px !important; /* Tighter padding so text doesn't hit the screen borders */
+    }
+    
+    .hero-overlay-text h2 {
+        font-size: 20px !important;
+        margin-bottom: 4px;
+    }
+    
+    .hero-overlay-text p {
+        font-size: 12px !important;
+        line-height: 1.4;
+    }
+
+    /* 4. EXCLUSIVE DEALS & MENU GRIDS */
+    .curated-offers-section,
+    .services-menu-section,
+    .booking-section {
+        margin: 35px auto !important; /* Brings sections closer together vertically for faster scrolling */
+        padding: 0 15px !important;
+    }
+    
+    .section-heading-block {
+        margin-bottom: 25px !important;
+    }
+    
+    .section-heading-block h2 {
+        font-size: 24px !important;
+    }
+
+    /* Force grids to single-column card layouts */
+    .offers-grid-six,
+    .services-grid-interactive {
+        grid-template-columns: 1fr !important;
+        gap: 20px !important;
+    }
+    
+    .card-img-container,
+    .service-img-frame {
+        height: 200px !important; /* Slightly shorter image blocks for better proportions on mobile */
+    }
+
+    /* 5. APPOINTMENT FORM & SELECTION STACK BOXES */
+    .form-card {
+        padding: 20px 15px !important; /* Maximizes the usable width for typing fields */
+        border-radius: 10px;
+    }
+    
+    .form-row {
+        flex-direction: column !important; /* Stacks Date and Time fields sequentially */
+        gap: 0;
+    }
+    
+    .selection-bucket-wrapper {
+        padding: 15px 10px !important;
+    }
+    
+    .bucket-flex-container {
+        flex-direction: column !important; /* Stacks the chosen items above the price total card */
+        gap: 15px;
+    }
+    
+    .total-price-box {
+        width: 100% !important; /* Full width checkout panel matching input design lines */
+        padding: 12px;
+    }
+    
+    .booking-submit-btn {
+        padding: 14px;
+        font-size: 13px;
+    }
+
+    /* 6. REBRANDED LUXURY STUDIO BOX */
+    .experience-brand-section {
+        padding: 40px 15px !important;
+    }
+    
+    .experience-box h2 {
+        font-size: 24px !important;
+    }
+    
+    .experience-desc {
+        font-size: 13px !important;
+        line-height: 1.7;
+        text-align: justify;
+    }
+
+    /* 7. MINIMALIST FOOTER */
+    .footer-grid {
+        grid-template-columns: 1fr !important;
+        text-align: center;
+        gap: 25px;
+        padding-bottom: 25px;
+    }
+    
+    .footer-col h3 {
+        font-size: 16px;
+        margin-bottom: 10px;
+    }
+}
