@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Appointment | Shree Kulaswamini Beauty Parlour</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Premium Google Fonts integration -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        /* Extra structural styling for the new dynamic bucket features */
+        .selection-bucket-wrapper {
+            margin-top: 25px;
+            background: #fff9fb;
+            border: 1px dashed #8c1c4f;
+            border-radius: 8px;
+            padding: 20px;
+        }
+        .bucket-title {
+            font-size: 14px;
+            font-weight: 600;
+            color: #401026;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .bucket-flex-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 20px;
+        }
+        .selected-items-list {
+            flex: 1;
+            list-style: none;
+        }
+        .selected-item-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #ffffff;
+            padding: 8px 12px;
+            border: 1px solid #e8dfde;
+            border-radius: 6px;
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+        .remove-item-btn {
+            background: none;
+            border: none;
+            color: #ff3b30;
+            font-weight: bold;
+            cursor: pointer;
+            font-size: 16px;
+            margin-left: 10px;
+        }
+        .total-price-box {
+            background: #ffffff;
+            border: 1px solid #b5945b;
+            border-radius: 6px;
+            padding: 15px;
+            min-width: 150px;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(181, 148, 91, 0.05);
+        }
+        .total-price-label {
+            font-size: 11px;
+            color: #b5945b;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .total-amount {
+            font-size: 22px;
+            color: #8c1c4f;
+            font-weight: 600;
+            margin-top: 5px;
+        }
+        .error-message-alert {
+            color: #ff3b30;
+            font-size: 12px;
+            margin-top: 5px;
+            display: block;
+            font-weight: 500;
+            line-height: 1.5;
+        }
+        @media (max-width: 600px) {
+            .bucket-flex-container { flex-direction: column; }
+            .total-price-box { width: 100%; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- TOP BRAND HEADER -->
+    <header>
+        <div class="brand-container">
+            <img src="images/logo.png" alt="Shree Kulaswamini Logo" class="brand-logo">
+            <div class="brand-text">
+                <h1>SHREE KULASWAMINI</h1>
+                <p class="brand-subtitle">BEAUTY PARLOUR & BRIDAL STUDIO</p>
+            </div>
+        </div>
+    </header>
+
+    <!-- PREMIUM NAVIGATION BAR -->
+    <nav>
+        <ul>
+            <li><a href="index.html" class="nav-link">Home</a></li>
+            <li><a href="services.html" class="nav-link">Services Menu</a></li>
+            <li><a href="appointment.html" class="nav-link active">Book Appointment</a></li>
+        </ul>
+    </nav>
+
+    <!-- APPOINTMENT FORM SECTION -->
+    <section class="booking-section">
+        <div class="section-heading-block">
+            <span class="gold-tagline">RESERVE A SLOT</span>
+            <h2>Schedule Your Session</h2>
+            <div class="gold-divider"></div>
+        </div>
+
+        <div class="booking-container">
+            <div class="form-card">
+                <form id="appointmentForm" onsubmit="sendToWhatsApp(event)">
+                    
+                    <div class="input-group">
+                        <label for="fullName">Full Name</label>
+                        <input type="text" id="fullName" placeholder="Enter your full name" required>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="phoneNumber">WhatsApp Number</label>
+                        <input type="tel" id="phoneNumber" pattern="[0-9]{10}" maxlength="10" placeholder="Enter 10-digit mobile number" required>
+                        <span class="error-message-alert" id="phoneError"></span>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="serviceSelect">Services (You can choose multiple services)</label>
+                        <select id="serviceSelect" onchange="addServiceToBucket()">
+                            <option value="" disabled selected>Select a treatment to add...</option>
+                            <option value="Hydra Facial Special|1799">Hydra Facial Special (Real Price: ₹3000 | Offer: ₹1799)</option>
+                            <option value="Jewellery Rental Booking|0">Jewellery Rental Consultation (Free)</option>
+                            <option value="Manicure + Pedicure Combo|400">Manicure + Pedicure Combo (Offer: ₹400)</option>
+                            <option value="Celebration / Party Makeup|1500">Celebration / Party Makeup (₹1500)</option>
+                            <option value="Intense Hair Spa Combo|999">Intense Hair Spa Combo (₹999)</option>
+                            <option value="Organic Fruit Facial|600">Organic Fruit Facial (₹600)</option>
+                        </select>
+                    </div>
+
+                    <!-- DYNAMIC CHOSEN SERVICES BUCKET -->
+                    <div class="selection-bucket-wrapper">
+                        <div class="bucket-title">Selected Treatments</div>
+                        <div class="bucket-flex-container">
+                            <ul id="selectedItemsList" class="selected-items-list">
+                                <li style="color: #aaa; font-size: 13px; font-style: italic;" id="emptyBucketMsg">No services added yet. Select from the dropdown above.</li>
+                            </ul>
+                            <div class="total-price-box">
+                                <div class="total-price-label">Total Price</div>
+                                <div class="total-amount">₹<span id="totalAmountDisplay">0</span></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-row" style="margin-top: 22px;">
+                        <div class="input-group">
+                            <label for="bookingDate">Preferred Date</label>
+                            <input type="date" id="bookingDate" onchange="checkSlotAvailability()" required>
+                        </div>
+                        <div class="input-group">
+                            <label for="bookingSlot">Available Time Slot</label>
+                            <select id="bookingSlot" onchange="checkSlotAvailability()" required>
+                                <option value="" disabled selected>Choose a date first...</option>
+                                <option value="11:00 AM - 12:00 PM">11:00 AM - 12:00 PM</option>
+                                <option value="12:00 PM - 01:00 PM">12:00 PM - 01:00 PM</option>
+                                <option value="01:00 PM - 02:00 PM">01:00 PM - 02:00 PM</option>
+                                <option value="03:00 PM - 04:00 PM">03:00 PM - 04:00 PM</option>
+                                <option value="04:00 PM - 05:00 PM">04:00 PM - 05:00 PM</option>
+                                <option value="05:00 PM - 06:00 PM">05:00 PM - 06:00 PM</option>
+                            </select>
+                            <span class="error-message-alert" id="slotError"></span>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="booking-submit-btn">Confirm Booking via WhatsApp</button>
+                </form>
+                
+                <p class="cancellation-note">
+                    📌 <strong>Booking Limit Rule:</strong> Each time slot allows a maximum of 2 concurrent bookings per date to avoid crowding at the studio.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- PREMIUM FOOTER -->
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-col">
+                <h3>Contact & Booking</h3>
+                <p>Sandhya Jagdale</p>
+                <p class="footer-phone">📞 +91 98817 56643</p>
+            </div>
+            <div class="footer-col">
+                <h3>Our Sanctuary Address</h3>
+                <p>Sree Kulaswamini Bungalow - 1,</p>
+                <p>Gopal Nagar Chowk, Amrutdham,</p>
+                <p>Panchavati, Nashik - 422003</p>
+            </div>
+        </div>
+        <div class="footer-copyright">
+            &copy; 2026 Shree Kulaswamini Beauty Parlour. Designed with Elegance. All Rights Reserved.
+        </div>
+    </footer>
+
+    <!-- INTERACTIVE APP CALCULATIONS & DATE CONTROLS -->
+    <script>
+        // Set minimum booking date constraints to restrict selecting past dates
+        const dateInput = document.getElementById('bookingDate');
+        const today = new Date();
+        const yyyy = today.getFullYear();
+        const mm = String(today.getMonth() + 1).padStart(2, '0');
+        const dd = String(today.getDate()).padStart(2, '0');
+        dateInput.min = `${yyyy}-${mm}-${dd}`;
+
+        // Global state tracking array for selected items
+        let chosenServices = [];
+
+        function addServiceToBucket() {
+            const selectElement = document.getElementById('serviceSelect');
+            if (!selectElement.value) return;
+
+            const [serviceName, priceStr] = selectElement.value.split('|');
+            const price = parseInt(priceStr);
+
+            if (chosenServices.some(item => item.name === serviceName)) {
+                selectElement.value = "";
+                return;
+            }
+
+            chosenServices.push({ name: serviceName, price: price });
+            renderBucket();
+            selectElement.value = ""; 
+        }
+
+        function removeServiceFromBucket(index) {
+            chosenServices.splice(index, 1);
+            renderBucket();
+            checkSlotAvailability();
+        }
+
+        function renderBucket() {
+            const listContainer = document.getElementById('selectedItemsList');
+            const totalDisplay = document.getElementById('totalAmountDisplay');
+            
+            listContainer.innerHTML = "";
+            let runningTotal = 0;
+
+            if (chosenServices.length === 0) {
+                listContainer.innerHTML = `<li style="color: #aaa; font-size: 13px; font-style: italic;" id="emptyBucketMsg">No services added yet. Select from the dropdown above.</li>`;
+                totalDisplay.textContent = "0";
+                return;
+            }
+
+            chosenServices.forEach((service, index) => {
+                runningTotal += service.price;
+                const li = document.createElement('li');
+                li.className = "selected-item-row";
+                li.innerHTML = `
+                    <span>${service.name} (₹${service.price})</span>
+                    <button type="button" class="remove-item-btn" onclick="removeServiceFromBucket(${index})">×</button>
+                `;
+                listContainer.appendChild(li);
+            });
+
+            totalDisplay.textContent = runningTotal;
+        }
+
+        // --- TWO-OPTION WHATSAPP WORKFLOW SYSTEM ---
+
+        const parlourNumber = "918975914625";
+
+        function getStorageKey(date, slot) {
+            return `booking_${date}_${slot.replace(/ /g, "_")}`;
+        }
+
+        function getBookingsCount(date, slot) {
+            const key = getStorageKey(date, slot);
+            return parseInt(localStorage.getItem(key) || "0");
+        }
+
+        function incrementBookingCount(date, slot) {
+            const key = getStorageKey(date, slot);
+            let currentCount = getBookingsCount(date, slot);
+            localStorage.setItem(key, currentCount + 1);
+        }
+
+        // Generates the special Inquiry Message with clickable Yes/No replies built-in
+        window.sendInquiryToSalon = function() {
+            const name = document.getElementById('fullName').value;
+            const phone = document.getElementById('phoneNumber').value;
+            const selectedDate = dateInput.value;
+            const selectedSlot = document.getElementById('bookingSlot').value;
+
+            if (!name || !phone || chosenServices.length === 0) {
+                alert("Please fill out your Name, Phone Number, and select your services first!");
+                return;
+            }
+
+            let serviceDetailsString = "";
+            let finalPriceTotal = 0;
+            chosenServices.forEach((item, index) => {
+                serviceDetailsString += `${index + 1}. ${item.name} (₹${item.price})\n`;
+                finalPriceTotal += item.price;
+            });
+
+            // Pre-built reply links that you (the salon owner) can tap instantly inside your chat bubble
+            const yesText = encodeURIComponent(`Yes, you can come in this slot! The previous request was canceled. Your booking is confirmed for ${selectedDate} at ${selectedSlot}! ✨`);
+            const noText = encodeURIComponent(`Sorry, that slot is completely full. 🔴 Please select another open slot time on our website structure!`);
+            
+            const salonYesLink = `https://wa.me/91${phone}?text=${yesText}`;
+            const salonNoLink = `https://wa.me/91${phone}?text=${noText}`;
+
+            const inquiryMessage = `⚠️ *Slot Full Inquiry Request* ⚠️\n\n` +
+                                   `👤 *Client Name:* ${name}\n` +
+                                   `📱 *WhatsApp Contact:* ${phone}\n\n` +
+                                   `💇‍♀️ *Desired Treatments:*\n${serviceDetailsString}` +
+                                   `💰 *Estimated Bill:* ₹${finalPriceTotal}\n\n` +
+                                   `📅 *Requested Date:* ${selectedDate}\n` +
+                                   `⏰ *Target Slot:* ${selectedSlot}\n\n` +
+                                   `-----------------------------\n` +
+                                   `📢 *SALON CHAT ACTIONS (Tap a link below to reply):*\n\n` +
+                                   ` 🟢 *ALLOW ACCESS (YES):*\n${salonYesLink}\n\n` +
+                                   ` 🔴 *DECLINE (NO/BOOK NEXT):*\n${salonNoLink}`;
+
+            window.open(`https://api.whatsapp.com/send?phone=${parlourNumber}&text=${encodeURIComponent(inquiryMessage)}`, '_blank');
+        }
+
+        function checkSlotAvailability() {
+            const selectedDate = dateInput.value;
+            const selectedSlot = document.getElementById('bookingSlot').value;
+            const slotError = document.getElementById('slotError');
+            const submitBtn = document.querySelector('.booking-submit-btn');
+            
+            if (!selectedDate || !selectedSlot) return true;
+
+            const currentBookings = getBookingsCount(selectedDate, selectedSlot);
+            
+            if (currentBookings >= 2) {
+                // Completely swap out the standard book button for your specialized two-option custom flow
+                submitBtn.style.display = "none"; 
+                
+                slotError.innerHTML = `
+                    🔒 This slot is temporarily full on the website grid.<br><br>
+                    <button type="button" onclick="window.sendInquiryToSalon()" style="background-color:#b5945b; color:white; border:none; padding:12px 15px; border-radius:6px; font-weight:600; cursor:pointer; width:100%; text-transform: uppercase; letter-spacing:0.5px;">
+                        👉 Ask Salon to Allow This Slot
+                    </button>`;
+                return false;
+            } else {
+                slotError.textContent = "";
+                submitBtn.style.display = "block"; 
+                return true;
+            }
+        }
+
+        function sendToWhatsApp(event) {
+            event.preventDefault();
+
+            const name = document.getElementById('fullName').value;
+            const phone = document.getElementById('phoneNumber').value;
+            const selectedDate = dateInput.value;
+            const selectedSlot = document.getElementById('bookingSlot').value;
+            const phoneError = document.getElementById('phoneError');
+
+            if (phone.length !== 10 || isNaN(phone)) {
+                phoneError.textContent = "❌ Please enter a valid 10-digit phone number.";
+                return;
+            } else {
+                phoneError.textContent = "";
+            }
+
+            if (chosenServices.length === 0) {
+                alert("Please add at least one treatment before submitting booking.");
+                return;
+            }
+
+            if (!checkSlotAvailability()) return;
+
+            incrementBookingCount(selectedDate, selectedSlot);
+            checkSlotAvailability(); 
+
+            let serviceDetailsString = "";
+            let finalPriceTotal = 0;
+            chosenServices.forEach((item, index) => {
+                serviceDetailsString += `${index + 1}. ${item.name} (₹${item.price})\n`;
+                finalPriceTotal += item.price;
+            });
+
+            const message = `✨ *New Studio Appointment Request* ✨\n\n` +
+                            `👤 *Client Name:* ${name}\n` +
+                            `📱 *WhatsApp:* ${phone}\n\n` +
+                            `💇‍♀️ *Treatments Chosen:*\n${serviceDetailsString}\n` +
+                            `💰 *Total Bill Estimate:* ₹${finalPriceTotal}\n\n` +
+                            `📅 *Target Date:* ${selectedDate}\n` +
+                            `⏰ *Assigned Slot:* ${selectedSlot}\n\n` +
+                            `Please reply to confirm my booking slot!`;
+
+            window.open(`https://api.whatsapp.com/send?phone=${parlourNumber}&text=${encodeURIComponent(message)}`, '_blank');
+        }
+    </script>
+
+</body>
+</html>
