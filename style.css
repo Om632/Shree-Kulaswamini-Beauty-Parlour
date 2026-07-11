@@ -907,3 +907,27 @@ footer {
         margin-bottom: 10px;
     }
 }
+
+/* GENERAL DESIGN SYSTEM STYLING BASE */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #faf9f8;
+    color: #2b2528;
+}
+
+.selected-item-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #ffffff;
+    padding: 8px 12px;
+    border: 1px solid #e8dfde;
+    border-radius: 6px;
+    margin-bottom: 8px;
+    font-size: 14px;
+}
