@@ -5,125 +5,151 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Our Services | Shree Kulaswamini Beauty Parlour</title>
     <link rel="stylesheet" href="style.css">
-    <!-- Premium Google Fonts integration -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- TAILWIND INJECTION -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        parlourWine: '#8c1c4f',
+                        parlourGold: '#b5945b',
+                        parlourDark: '#401026',
+                    }
+                }
+            }
+        }
+    </script>
 </head>
-<body>
+<body class="bg-stone-50/50 text-stone-800 antialiased font-['Poppins',sans-serif]">
 
-    <!-- TOP BRAND HEADER -->
-    <header>
-        <div class="brand-container">
-            <img src="images/logo.png" alt="Shree Kulaswamini Logo" class="brand-logo">
-            <div class="brand-text">
-                <h1>SHREE KULASWAMINI</h1>
-                <p class="brand-subtitle">BEAUTY PARLOUR & BRIDAL STUDIO</p>
-            </div>
+    <!-- PREMIUM STICKY NAVBAR OVERLAY -->
+    <header id="mainHeader" class="sticky top-0 z-50 w-full transition-all duration-300 bg-white border-b border-transparent">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between transition-all duration-300" id="headerContainer">
+            <a href="index.html" class="flex items-center gap-3 group">
+                <img src="images/logo.png" alt="Shree Kulaswamini Logo" class="h-12 w-auto object-contain transition-transform duration-500 group-hover:scale-105">
+                <div class="flex flex-col">
+                    <h1 class="font-['Marcellus',serif] text-lg sm:text-2xl font-semibold tracking-wide text-parlourDark leading-tight">SHREE KULASWAMINI</h1>
+                    <p class="text-[8px] sm:text-[10px] font-medium tracking-[0.2em] text-parlourGold uppercase">BEAUTY PARLOUR & BRIDAL STUDIO</p>
+                </div>
+            </a>
+            <nav class="flex items-center">
+                <ul class="flex items-center gap-2 sm:gap-6 text-xs sm:text-sm font-medium tracking-wide">
+                    <li><a href="index.html" class="px-3 py-2 rounded-md text-stone-600 hover:text-parlourWine hover:bg-stone-50 transition-all duration-200">Home</a></li>
+                    <li><a href="services.html" class="px-3 py-2 rounded-md text-parlourWine font-semibold transition-all duration-200">Services Menu</a></li>
+                    <li><a href="appointment.html" class="px-4 py-2 sm:py-2.5 rounded-full bg-parlourWine text-white hover:bg-parlourDark shadow-sm hover:shadow transition-all duration-200 text-center text-[10px] sm:text-xs uppercase font-semibold tracking-wider">Book Now</a></li>
+                </ul>
+            </nav>
         </div>
     </header>
 
-    <!-- PREMIUM NAVIGATION BAR -->
-    <nav>
-        <ul>
-            <li><a href="index.html" class="nav-link">Home</a></li>
-            <li><a href="services.html" class="nav-link active">Services Menu</a></li>
-            <li><a href="appointment.html" class="nav-link">Book Appointment</a></li>
-        </ul>
-    </nav>
-
-    <!-- SERVICES PAGE CONTENT -->
-    <section class="services-menu-section">
-        <div class="section-heading-block">
-            <span class="gold-tagline">OUR SERVICES</span>
-            <h2>Signature Treatment Packages</h2>
-            <div class="gold-divider"></div>
+    <!-- SERVICES MENU GRID WITH BOOK NOW LINKS -->
+    <section class="max-w-7xl mx-auto my-16 px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+            <span class="text-xs font-semibold tracking-widest text-parlourGold uppercase block mb-2">OUR SERVICES</span>
+            <h2 class="font-['Marcellus',serif] text-3xl sm:text-4xl text-parlourDark font-medium">Signature Treatment Packages</h2>
+            <div class="w-16 h-0.5 bg-parlourGold mx-auto mt-4"></div>
         </div>
 
-        <div class="services-grid-interactive">
-            
-            <!-- Category 1: Bridal & Festive -->
-            <div class="service-interactive-card">
-                <div class="service-img-frame">
-                    <!-- Save your bridal image as service-bridal.jpg -->
-                    <img src="images/offer6.jpg" alt="Bridal & Festive Makeup">
-                </div>
-                <div class="service-details-box">
-                    <h3>Bridal & Festive Glow</h3>
-                    <p class="short-desc">Click or hover to reveal luxury makeup details.</p>
-                    <div class="expanded-menu-content">
-                        <ul>
-                            <li>HD Bridal Makeup Packages</li>
-                            <li>Festive & Traditional Party Looks</li>
-                            <li>Hairstyling & Saree Draping</li>
-                            <li>Pre-Bridal Skin Care Cleanups</li>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Category 1 -->
+            <div class="bg-white rounded-xl overflow-hidden border border-stone-100 shadow-sm flex flex-col justify-between hover:shadow-md transition-all duration-300">
+                <div>
+                    <div class="h-52 overflow-hidden"><img src="images/offer6.jpg" alt="Bridal Makeup" class="w-full h-full object-cover"></div>
+                    <div class="p-6">
+                        <h3 class="font-['Marcellus',serif] text-xl text-parlourDark font-semibold mb-3">Bridal & Festive Glow</h3>
+                        <ul class="space-y-2 text-xs text-stone-500 mb-4">
+                            <li>• HD Bridal Makeup Packages</li>
+                            <li>• Festive & Traditional Party Looks</li>
+                            <li>• Hairstyling & Saree Draping</li>
+                            <li>• Pre-Bridal Skin Care Cleanups</li>
                         </ul>
                     </div>
                 </div>
+                <div class="p-6 pt-0">
+                    <a href="appointment.html" class="block w-full text-center bg-parlourWine text-white text-xs uppercase font-semibold tracking-wider py-2.5 rounded-lg hover:bg-parlourDark transition-all duration-200">Book Now</a>
+                </div>
             </div>
 
-            <!-- Category 2: Advanced Skincare -->
-            <div class="service-interactive-card">
-                <div class="service-img-frame">
-                    <!-- Save your skin image as service-skin.jpg -->
-                    <img src="images/offer2.jpg" alt="Clinical & Fruit Facials">
-                </div>
-                <div class="service-details-box">
-                    <h3>Skincare & Facials</h3>
-                    <p class="short-desc">Click or hover to reveal treatment menus.</p>
-                    <div class="expanded-menu-content">
-                        <ul>
-                            <li>Advanced Hydra Facial Glow</li>
-                            <li>Organic Herbal & Fruit Facials</li>
-                            <li>De-Tan & Deep Cleansing Packs</li>
-                            <li>Threading (Eyebrows & Upper Lip)</li>
+            <!-- Category 2 -->
+            <div class="bg-white rounded-xl overflow-hidden border border-stone-100 shadow-sm flex flex-col justify-between hover:shadow-md transition-all duration-300">
+                <div>
+                    <div class="h-52 overflow-hidden"><img src="images/offer2.jpg" alt="Skincare" class="w-full h-full object-cover"></div>
+                    <div class="p-6">
+                        <h3 class="font-['Marcellus',serif] text-xl text-parlourDark font-semibold mb-3">Skincare & Facials</h3>
+                        <ul class="space-y-2 text-xs text-stone-500 mb-4">
+                            <li>• Advanced Hydra Facial Glow</li>
+                            <li>• Organic Herbal & Fruit Facials</li>
+                            <li>• De-Tan & Deep Cleansing Packs</li>
+                            <li>• Threading (Eyebrows & Upper Lip)</li>
                         </ul>
                     </div>
                 </div>
+                <div class="p-6 pt-0">
+                    <a href="appointment.html" class="block w-full text-center bg-parlourWine text-white text-xs uppercase font-semibold tracking-wider py-2.5 rounded-lg hover:bg-parlourDark transition-all duration-200">Book Now</a>
+                </div>
             </div>
 
-            <!-- Category 3: Hair Styling & Care -->
-            <div class="service-interactive-card">
-                <div class="service-img-frame">
-                    <!-- Save your hair image as service-hair.jpg -->
-                    <img src="images/offer1.jpg" alt="Hair Spa & Treatments">
-                </div>
-                <div class="service-details-box">
-                    <h3>Hair Artistry & Spa</h3>
-                    <p class="short-desc">Click or hover to reveal styling catalog.</p>
-                    <div class="expanded-menu-content">
-                        <ul>
-                            <li>Deep Nourishing Hair Spas</li>
-                            <li>Trending Haircuts & Styling</li>
-                            <li>Global Hair Coloring & Highlights</li>
-                            <li>Smoothening & Straightening</li>
+            <!-- Category 3 -->
+            <div class="bg-white rounded-xl overflow-hidden border border-stone-100 shadow-sm flex flex-col justify-between hover:shadow-md transition-all duration-300">
+                <div>
+                    <div class="h-52 overflow-hidden"><img src="images/offer1.jpg" alt="Hair Spa" class="w-full h-full object-cover"></div>
+                    <div class="p-6">
+                        <h3 class="font-['Marcellus',serif] text-xl text-parlourDark font-semibold mb-3">Hair Artistry & Spa</h3>
+                        <ul class="space-y-2 text-xs text-stone-500 mb-4">
+                            <li>• Deep Nourishing Hair Spas</li>
+                            <li>• Trending Haircuts & Styling</li>
+                            <li>• Global Hair Coloring & Highlights</li>
+                            <li>• Smoothening & Straightening</li>
                         </ul>
                     </div>
                 </div>
+                <div class="p-6 pt-0">
+                    <a href="appointment.html" class="block w-full text-center bg-parlourWine text-white text-xs uppercase font-semibold tracking-wider py-2.5 rounded-lg hover:bg-parlourDark transition-all duration-200">Book Now</a>
+                </div>
             </div>
-
         </div>
     </section>
 
-    <!-- PREMIUM FOOTER -->
-    <footer>
-        <div class="footer-grid">
-            <div class="footer-col">
-                <h3>Contact & Booking</h3>
-                <p>Sandhya Jagdale</p>
-                <p class="footer-phone">📞 +91 98817 56643</p>
+    <!-- FOOTER -->
+    <footer class="bg-stone-900 text-stone-400 border-t border-stone-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 grid grid-cols-1 sm:grid-cols-2 gap-10">
+            <div>
+                <h3 class="text-white font-semibold text-sm uppercase tracking-wider mb-3">Contact & Booking</h3>
+                <p class="text-stone-300 text-sm">Sandhya Jagdale</p>
+                <p class="text-parlourGold font-semibold mt-2 text-sm">📞 +91 98817 56643</p>
             </div>
-            <div class="footer-col">
-                <h3>Our Sanctuary Address</h3>
-                <p>Sree Kulaswamini Bungalow - 1,</p>
-                <p>Gopal Nagar Chowk, Amrutdham,</p>
-                <p>Panchavati, Nashik - 422003</p>
+            <div>
+                <h3 class="text-white font-semibold text-sm uppercase tracking-wider mb-3">Our Sanctuary Address</h3>
+                <p class="text-stone-300 text-sm leading-relaxed">Sree Kulaswamini Bungalow - 1,<br>Gopal Nagar Chowk, Amrutdham,<br>Panchavati, Nashik - 422003</p>
             </div>
         </div>
-        <div class="footer-copyright">
-            &copy; 2026 Shree Kulaswamini Beauty Parlour. Designed with Elegance. All Rights Reserved.
+        <div class="text-center text-xs text-stone-600 py-6 border-t border-stone-800/50">
+            &copy; 2026 Shree Kulaswamini Beauty Parlour. All Rights Reserved.
         </div>
     </footer>
 
+    <!-- INTERACTIVE ENGINE -->
+    <script>
+        window.addEventListener('scroll', function() {
+            const header = document.getElementById('mainHeader');
+            const container = document.getElementById('headerContainer');
+            if (window.scrollY > 20) {
+                header.classList.add('bg-white/95', 'backdrop-blur-md', 'shadow-md', 'border-stone-200/80');
+                header.classList.remove('border-transparent');
+                container.classList.remove('h-20');
+                container.classList.add('h-16');
+            } else {
+                header.classList.remove('bg-white/95', 'backdrop-blur-md', 'shadow-md', 'border-stone-200/80');
+                header.classList.add('border-transparent');
+                container.classList.remove('h-16');
+                container.classList.add('h-20');
+            }
+        });
+    </script>
 </body>
 </html>

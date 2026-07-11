@@ -5,37 +5,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Book Appointment | Shree Kulaswamini Beauty Parlour</title>
     <link rel="stylesheet" href="style.css">
-    <!-- Premium Google Fonts integration -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- TAILWIND INJECTION -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        parlourWine: '#8c1c4f',
+                        parlourGold: '#b5945b',
+                        parlourDark: '#401026',
+                    }
+                }
+            }
+        }
+    </script>
     <style>
-        /* Extra structural styling for the new dynamic bucket features */
-        .selection-bucket-wrapper {
-            margin-top: 25px;
-            background: #fff9fb;
-            border: 1px dashed #8c1c4f;
-            border-radius: 8px;
-            padding: 20px;
-        }
-        .bucket-title {
-            font-size: 14px;
-            font-weight: 600;
-            color: #401026;
-            margin-bottom: 15px;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-        .bucket-flex-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            gap: 20px;
-        }
-        .selected-items-list {
-            flex: 1;
-            list-style: none;
-        }
         .selected-item-row {
             display: flex;
             justify-content: space-between;
@@ -47,176 +36,146 @@
             margin-bottom: 8px;
             font-size: 14px;
         }
-        .remove-item-btn {
-            background: none;
-            border: none;
-            color: #ff3b30;
-            font-weight: bold;
-            cursor: pointer;
-            font-size: 16px;
-            margin-left: 10px;
-        }
-        .total-price-box {
-            background: #ffffff;
-            border: 1px solid #b5945b;
-            border-radius: 6px;
-            padding: 15px;
-            min-width: 150px;
-            text-align: center;
-            box-shadow: 0 4px 10px rgba(181, 148, 91, 0.05);
-        }
-        .total-price-label {
-            font-size: 11px;
-            color: #b5945b;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-        .total-amount {
-            font-size: 22px;
-            color: #8c1c4f;
-            font-weight: 600;
-            margin-top: 5px;
-        }
-        .error-message-alert {
-            color: #ff3b30;
-            font-size: 12px;
-            margin-top: 5px;
-            display: block;
-            font-weight: 500;
-            line-height: 1.5;
-        }
-        @media (max-width: 600px) {
-            .bucket-flex-container { flex-direction: column; }
-            .total-price-box { width: 100%; }
-        }
     </style>
 </head>
-<body>
+<body class="bg-stone-50/50 text-stone-800 antialiased font-['Poppins',sans-serif]">
 
-    <!-- TOP BRAND HEADER -->
-    <header>
-        <div class="brand-container">
-            <img src="images/logo.png" alt="Shree Kulaswamini Logo" class="brand-logo">
-            <div class="brand-text">
-                <h1>SHREE KULASWAMINI</h1>
-                <p class="brand-subtitle">BEAUTY PARLOUR & BRIDAL STUDIO</p>
-            </div>
+    <!-- PREMIUM STICKY NAVBAR OVERLAY -->
+    <header id="mainHeader" class="sticky top-0 z-50 w-full transition-all duration-300 bg-white border-b border-transparent">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between transition-all duration-300" id="headerContainer">
+            <a href="index.html" class="flex items-center gap-3 group">
+                <img src="images/logo.png" alt="Shree Kulaswamini Logo" class="h-12 w-auto object-contain transition-transform duration-500 group-hover:scale-105">
+                <div class="flex flex-col">
+                    <h1 class="font-['Marcellus',serif] text-lg sm:text-2xl font-semibold tracking-wide text-parlourDark leading-tight">SHREE KULASWAMINI</h1>
+                    <p class="text-[8px] sm:text-[10px] font-medium tracking-[0.2em] text-parlourGold uppercase">BEAUTY PARLOUR & BRIDAL STUDIO</p>
+                </div>
+            </a>
+            <nav class="flex items-center">
+                <ul class="flex items-center gap-2 sm:gap-6 text-xs sm:text-sm font-medium tracking-wide">
+                    <li><a href="index.html" class="px-3 py-2 rounded-md text-stone-600 hover:text-parlourWine hover:bg-stone-50 transition-all duration-200">Home</a></li>
+                    <li><a href="services.html" class="px-3 py-2 rounded-md text-stone-600 hover:text-parlourWine hover:bg-stone-50 transition-all duration-200">Services Menu</a></li>
+                    <li><a href="appointment.html" class="px-4 py-2 sm:py-2.5 rounded-full bg-parlourWine text-white hover:bg-parlourDark shadow-sm hover:shadow transition-all duration-200 text-center text-[10px] sm:text-xs uppercase font-semibold tracking-wider">Book Appointment</a></li>
+                </ul>
+            </nav>
         </div>
     </header>
 
-    <!-- PREMIUM NAVIGATION BAR -->
-    <nav>
-        <ul>
-            <li><a href="index.html" class="nav-link">Home</a></li>
-            <li><a href="services.html" class="nav-link">Services Menu</a></li>
-            <li><a href="appointment.html" class="nav-link active">Book Appointment</a></li>
-        </ul>
-    </nav>
-
-    <!-- APPOINTMENT FORM SECTION -->
-    <section class="booking-section">
-        <div class="section-heading-block">
-            <span class="gold-tagline">RESERVE A SLOT</span>
-            <h2>Schedule Your Session</h2>
-            <div class="gold-divider"></div>
+    <!-- APPOINTMENT SECTION -->
+    <section class="max-w-3xl mx-auto my-10 px-4 sm:px-6">
+        <div class="text-center mb-10">
+            <span class="text-xs font-semibold tracking-widest text-parlourGold uppercase block mb-2">RESERVE A SLOT</span>
+            <h2 class="font-['Marcellus',serif] text-3xl sm:text-4xl text-parlourDark font-medium">Schedule Your Session</h2>
+            <div class="w-16 h-0.5 bg-parlourGold mx-auto mt-4"></div>
         </div>
 
-        <div class="booking-container">
-            <div class="form-card">
-                <form id="appointmentForm" onsubmit="sendToWhatsApp(event)">
-                    
-                    <div class="input-group">
-                        <label for="fullName">Full Name</label>
-                        <input type="text" id="fullName" placeholder="Enter your full name" required>
-                    </div>
-
-                    <div class="input-group">
-                        <label for="phoneNumber">WhatsApp Number</label>
-                        <input type="tel" id="phoneNumber" pattern="[0-9]{10}" maxlength="10" placeholder="Enter 10-digit mobile number" required>
-                        <span class="error-message-alert" id="phoneError"></span>
-                    </div>
-
-                    <div class="input-group">
-                        <label for="serviceSelect">Services (You can choose multiple services)</label>
-                        <select id="serviceSelect" onchange="addServiceToBucket()">
-                            <option value="" disabled selected>Select a treatment to add...</option>
-                            <option value="Hydra Facial Special|1799">Hydra Facial Special (Real Price: ₹3000 | Offer: ₹1799)</option>
-                            <option value="Jewellery Rental Booking|0">Jewellery Rental Consultation (Free)</option>
-                            <option value="Manicure + Pedicure Combo|400">Manicure + Pedicure Combo (Offer: ₹400)</option>
-                            <option value="Celebration / Party Makeup|1500">Celebration / Party Makeup (₹1500)</option>
-                            <option value="Intense Hair Spa Combo|999">Intense Hair Spa Combo (₹999)</option>
-                            <option value="Organic Fruit Facial|600">Organic Fruit Facial (₹600)</option>
-                        </select>
-                    </div>
-
-                    <!-- DYNAMIC CHOSEN SERVICES BUCKET -->
-                    <div class="selection-bucket-wrapper">
-                        <div class="bucket-title">Selected Treatments</div>
-                        <div class="bucket-flex-container">
-                            <ul id="selectedItemsList" class="selected-items-list">
-                                <li style="color: #aaa; font-size: 13px; font-style: italic;" id="emptyBucketMsg">No services added yet. Select from the dropdown above.</li>
-                            </ul>
-                            <div class="total-price-box">
-                                <div class="total-price-label">Total Price</div>
-                                <div class="total-amount">₹<span id="totalAmountDisplay">0</span></div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="form-row" style="margin-top: 22px;">
-                        <div class="input-group">
-                            <label for="bookingDate">Preferred Date</label>
-                            <input type="date" id="bookingDate" onchange="checkSlotAvailability()" required>
-                        </div>
-                        <div class="input-group">
-                            <label for="bookingSlot">Available Time Slot</label>
-                            <select id="bookingSlot" onchange="checkSlotAvailability()" required>
-                                <option value="" disabled selected>Choose a date first...</option>
-                                <option value="11:00 AM - 12:00 PM">11:00 AM - 12:00 PM</option>
-                                <option value="12:00 PM - 01:00 PM">12:00 PM - 01:00 PM</option>
-                                <option value="01:00 PM - 02:00 PM">01:00 PM - 02:00 PM</option>
-                                <option value="03:00 PM - 04:00 PM">03:00 PM - 04:00 PM</option>
-                                <option value="04:00 PM - 05:00 PM">04:00 PM - 05:00 PM</option>
-                                <option value="05:00 PM - 06:00 PM">05:00 PM - 06:00 PM</option>
-                            </select>
-                            <span class="error-message-alert" id="slotError"></span>
-                        </div>
-                    </div>
-
-                    <button type="submit" class="booking-submit-btn">Confirm Booking via WhatsApp</button>
-                </form>
+        <div class="bg-white rounded-2xl border border-stone-100 shadow-xl p-6 sm:p-10">
+            <form id="appointmentForm" onsubmit="sendToWhatsApp(event)" class="space-y-6">
                 
-                <p class="cancellation-note">
-                    📌 <strong>Booking Limit Rule:</strong> Each time slot allows a maximum of 2 concurrent bookings per date to avoid crowding at the studio.
-                </p>
-            </div>
+                <div class="grid grid-cols-1 gap-6 sm:grid-cols-2">
+                    <div>
+                        <label class="block text-xs font-semibold uppercase tracking-wider text-stone-600 mb-2">Full Name</label>
+                        <input type="text" id="fullName" class="w-full px-4 py-3 bg-stone-50/50 border border-stone-200 rounded-lg focus:border-parlourWine focus:bg-white outline-none text-sm transition-all duration-200" placeholder="Enter your full name" required>
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold uppercase tracking-wider text-stone-600 mb-2">WhatsApp Number</label>
+                        <input type="tel" id="phoneNumber" pattern="[0-9]{10}" maxlength="10" class="w-full px-4 py-3 bg-stone-50/50 border border-stone-200 rounded-lg focus:border-parlourWine focus:bg-white outline-none text-sm transition-all duration-200" placeholder="Enter 10-digit mobile number" required>
+                        <span class="text-xs text-red-500 font-medium block mt-1" id="phoneError"></span>
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block text-xs font-semibold uppercase tracking-wider text-stone-600 mb-2">Services (You can choose multiple services)</label>
+                    <select id="serviceSelect" onchange="addServiceToBucket()" class="w-full px-4 py-3 bg-stone-50/50 border border-stone-200 rounded-lg focus:border-parlourWine focus:bg-white outline-none text-sm transition-all duration-200">
+                        <option value="" disabled selected>Select a treatment to add...</option>
+                        <option value="Hydra Facial Special|1799">Hydra Facial Special (Real Price: ₹3000 | Offer: ₹1799)</option>
+                        <option value="Jewellery Rental Booking|0">Jewellery Rental Consultation (Free)</option>
+                        <option value="Manicure + Pedicure Combo|400">Manicure + Pedicure Combo (Offer: ₹400)</option>
+                        <option value="Celebration / Party Makeup|1500">Celebration / Party Makeup (₹1500)</option>
+                        <option value="Intense Hair Spa Combo|999">Intense Hair Spa Combo (₹999)</option>
+                        <option value="Organic Fruit Facial|600">Organic Fruit Facial (₹600)</option>
+                    </select>
+                </div>
+
+                <!-- DYNAMIC CHOSEN SERVICES BUCKET -->
+                <div class="bg-rose-50/30 border border-dashed border-parlourWine/40 rounded-xl p-5">
+                    <div class="text-xs font-semibold tracking-wider text-parlourDark uppercase mb-4">Selected Treatments</div>
+                    <div class="flex flex-col md:flex-row gap-6 justify-between items-start">
+                        <ul id="selectedItemsList" class="w-full flex-1">
+                            <li class="text-stone-400 text-xs italic" id="emptyBucketMsg">No services added yet. Select from the dropdown above.</li>
+                        </ul>
+                        <div class="w-full md:w-auto min-w-[140px] bg-white border border-parlourGold/50 rounded-lg p-4 text-center shadow-sm">
+                            <div class="text-[10px] text-parlourGold font-semibold uppercase tracking-widest">Total Price</div>
+                            <div class="text-2xl text-parlourWine font-bold mt-1">₹<span id="totalAmountDisplay">0</span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 gap-6 sm:grid-cols-2">
+                    <div>
+                        <label class="block text-xs font-semibold uppercase tracking-wider text-stone-600 mb-2">Preferred Date</label>
+                        <input type="date" id="bookingDate" onchange="checkSlotAvailability()" class="w-full px-4 py-3 bg-stone-50/50 border border-stone-200 rounded-lg focus:border-parlourWine focus:bg-white outline-none text-sm transition-all duration-200" required>
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold uppercase tracking-wider text-stone-600 mb-2">Available Time Slot</label>
+                        <select id="bookingSlot" onchange="checkSlotAvailability()" class="w-full px-4 py-3 bg-stone-50/50 border border-stone-200 rounded-lg focus:border-parlourWine focus:bg-white outline-none text-sm transition-all duration-200" required>
+                            <option value="" disabled selected>Choose a date first...</option>
+                            <option value="11:00 AM - 12:00 PM">11:00 AM - 12:00 PM</option>
+                            <option value="12:00 PM - 01:00 PM">12:00 PM - 01:00 PM</option>
+                            <option value="01:00 PM - 02:00 PM">01:00 PM - 02:00 PM</option>
+                            <option value="03:00 PM - 04:00 PM">03:00 PM - 04:00 PM</option>
+                            <option value="04:00 PM - 05:00 PM">04:00 PM - 05:00 PM</option>
+                            <option value="05:00 PM - 06:00 PM">05:00 PM - 06:00 PM</option>
+                        </select>
+                        <span class="text-xs text-red-500 font-medium block mt-2 leading-relaxed" id="slotError"></span>
+                    </div>
+                </div>
+
+                <button type="submit" class="w-full bg-parlourWine text-white font-semibold tracking-wider text-xs uppercase py-4 rounded-lg shadow-lg hover:bg-parlourDark transition-all duration-200 booking-submit-btn">
+                    Confirm Booking via WhatsApp
+                </button>
+            </form>
+            <p class="text-[11px] text-stone-500 mt-6 pt-5 border-t border-dashed border-stone-100 leading-relaxed">
+                📌 <strong>Booking Limit Rule:</strong> Each time slot allows a maximum of 2 concurrent bookings per date to avoid crowding at the studio.
+            </p>
         </div>
     </section>
 
-    <!-- PREMIUM FOOTER -->
-    <footer>
-        <div class="footer-grid">
-            <div class="footer-col">
-                <h3>Contact & Booking</h3>
-                <p>Sandhya Jagdale</p>
-                <p class="footer-phone">📞 +91 98817 56643</p>
+    <!-- FOOTER -->
+    <footer class="bg-stone-900 text-stone-400 border-t border-stone-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 grid grid-cols-1 sm:grid-cols-2 gap-10">
+            <div>
+                <h3 class="text-white font-semibold text-sm uppercase tracking-wider mb-3">Contact & Booking</h3>
+                <p class="text-stone-300 text-sm">Sandhya Jagdale</p>
+                <p class="text-parlourGold font-semibold mt-2 text-sm">📞 +91 89759 14625</p>
             </div>
-            <div class="footer-col">
-                <h3>Our Sanctuary Address</h3>
-                <p>Sree Kulaswamini Bungalow - 1,</p>
-                <p>Gopal Nagar Chowk, Amrutdham,</p>
-                <p>Panchavati, Nashik - 422003</p>
+            <div>
+                <h3 class="text-white font-semibold text-sm uppercase tracking-wider mb-3">Our Sanctuary Address</h3>
+                <p class="text-stone-300 text-sm leading-relaxed">Sree Kulaswamini Bungalow - 1,<br>Gopal Nagar Chowk, Amrutdham,<br>Panchavati, Nashik - 422003</p>
             </div>
         </div>
-        <div class="footer-copyright">
-            &copy; 2026 Shree Kulaswamini Beauty Parlour. Designed with Elegance. All Rights Reserved.
+        <div class="text-center text-xs text-stone-600 py-6 border-t border-stone-800/50">
+            &copy; 2026 Shree Kulaswamini Beauty Parlour. All Rights Reserved.
         </div>
     </footer>
 
-    <!-- INTERACTIVE APP CALCULATIONS & DATE CONTROLS -->
+    <!-- INTERACTIVE SCRIPT CONTROLS -->
     <script>
-        // Set minimum booking date constraints to restrict selecting past dates
+        window.addEventListener('scroll', function() {
+            const header = document.getElementById('mainHeader');
+            const container = document.getElementById('headerContainer');
+            if (window.scrollY > 20) {
+                header.classList.add('bg-white/95', 'backdrop-blur-md', 'shadow-md', 'border-stone-200/80');
+                header.classList.remove('border-transparent');
+                container.classList.remove('h-20');
+                container.classList.add('h-16');
+            } else {
+                header.classList.remove('bg-white/95', 'backdrop-blur-md', 'shadow-md', 'border-stone-200/80');
+                header.classList.add('border-transparent');
+                container.classList.remove('h-16');
+                container.classList.add('h-20');
+            }
+        });
+
         const dateInput = document.getElementById('bookingDate');
         const today = new Date();
         const yyyy = today.getFullYear();
@@ -224,7 +183,6 @@
         const dd = String(today.getDate()).padStart(2, '0');
         dateInput.min = `${yyyy}-${mm}-${dd}`;
 
-        // Global state tracking array for selected items
         let chosenServices = [];
 
         function addServiceToBucket() {
@@ -268,16 +226,14 @@
                 const li = document.createElement('li');
                 li.className = "selected-item-row";
                 li.innerHTML = `
-                    <span>${service.name} (₹${service.price})</span>
-                    <button type="button" class="remove-item-btn" onclick="removeServiceFromBucket(${index})">×</button>
+                    <span class="text-stone-700 font-medium">${service.name} (₹${service.price})</span>
+                    <button type="button" class="text-red-500 hover:text-red-700 font-bold ml-2 text-lg outline-none" onclick="removeServiceFromBucket(${index})">×</button>
                 `;
                 listContainer.appendChild(li);
             });
 
             totalDisplay.textContent = runningTotal;
         }
-
-        // --- TWO-OPTION WHATSAPP WORKFLOW SYSTEM ---
 
         const parlourNumber = "918975914625";
 
@@ -296,7 +252,6 @@
             localStorage.setItem(key, currentCount + 1);
         }
 
-        // Generates the special Inquiry Message with clickable Yes/No replies built-in
         window.sendInquiryToSalon = function() {
             const name = document.getElementById('fullName').value;
             const phone = document.getElementById('phoneNumber').value;
@@ -315,7 +270,6 @@
                 finalPriceTotal += item.price;
             });
 
-            // Pre-built reply links that you (the salon owner) can tap instantly inside your chat bubble
             const yesText = encodeURIComponent(`Yes, you can come in this slot! The previous request was canceled. Your booking is confirmed for ${selectedDate} at ${selectedSlot}! ✨`);
             const noText = encodeURIComponent(`Sorry, that slot is completely full. 🔴 Please select another open slot time on our website structure!`);
             
@@ -348,12 +302,11 @@
             const currentBookings = getBookingsCount(selectedDate, selectedSlot);
             
             if (currentBookings >= 2) {
-                // Completely swap out the standard book button for your specialized two-option custom flow
                 submitBtn.style.display = "none"; 
                 
                 slotError.innerHTML = `
                     🔒 This slot is temporarily full on the website grid.<br><br>
-                    <button type="button" onclick="window.sendInquiryToSalon()" style="background-color:#b5945b; color:white; border:none; padding:12px 15px; border-radius:6px; font-weight:600; cursor:pointer; width:100%; text-transform: uppercase; letter-spacing:0.5px;">
+                    <button type="button" onclick="window.sendInquiryToSalon()" class="w-full bg-amber-600 text-white border-none py-3 px-4 rounded-lg font-semibold cursor-pointer text-xs uppercase tracking-wider transition-colors duration-200 hover:bg-amber-700">
                         👉 Ask Salon to Allow This Slot
                     </button>`;
                 return false;
@@ -399,7 +352,7 @@
 
             const message = `✨ *New Studio Appointment Request* ✨\n\n` +
                             `👤 *Client Name:* ${name}\n` +
-                            `📱 *WhatsApp:* ${phone}\n\n` +
+                            `📱 *WhatsApp:* 91${phone}\n\n` +
                             `💇‍♀️ *Treatments Chosen:*\n${serviceDetailsString}\n` +
                             `💰 *Total Bill Estimate:* ₹${finalPriceTotal}\n\n` +
                             `📅 *Target Date:* ${selectedDate}\n` +
@@ -409,6 +362,5 @@
             window.open(`https://api.whatsapp.com/send?phone=${parlourNumber}&text=${encodeURIComponent(message)}`, '_blank');
         }
     </script>
-
 </body>
 </html>

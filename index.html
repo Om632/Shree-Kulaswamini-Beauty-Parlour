@@ -5,170 +5,246 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Shree Kulaswamini Beauty Parlour | Premium Salon Nashik</title>
     <link rel="stylesheet" href="style.css">
-    <!-- Premium Google Fonts integration -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- TAILWIND INJECTION -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        parlourWine: '#8c1c4f',
+                        parlourGold: '#b5945b',
+                        parlourDark: '#401026',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Pure CSS Infinite Auto-Slider Loop Animation */
+        .slider-track {
+            display: flex;
+            width: 300%;
+            animation: slideAnimation 12s infinite ease-in-out;
+        }
+        .slide-frame {
+            width: 33.333%;
+            flex-shrink: 0;
+        }
+        @keyframes slideAnimation {
+            0%, 28% { transform: translateX(0); }
+            33%, 61% { transform: translateX(-33.333%); }
+            66%, 95% { transform: translateX(-66.666%); }
+            100% { transform: translateX(0); }
+        }
+    </style>
 </head>
-<body>
+<body class="bg-stone-50/50 text-stone-800 antialiased font-['Poppins',sans-serif]">
 
-    <!-- TOP BRAND HEADER -->
-    <header>
-        <div class="brand-container">
-            <img src="images/logo.png" alt="Shree Kulaswamini Logo" class="brand-logo">
-            <div class="brand-text">
-                <h1>SHREE KULASWAMINI</h1>
-                <p class="brand-subtitle">BEAUTY PARLOUR & BRIDAL STUDIO</p>
-            </div>
+    <!-- PREMIUM STICKY NAVBAR OVERLAY -->
+    <header id="mainHeader" class="sticky top-0 z-50 w-full transition-all duration-300 bg-white border-b border-transparent">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between transition-all duration-300" id="headerContainer">
+            <a href="index.html" class="flex items-center gap-3 group">
+                <img src="images/logo.png" alt="Shree Kulaswamini Logo" class="h-12 w-auto object-contain transition-transform duration-500 group-hover:scale-105">
+                <div class="flex flex-col">
+                    <h1 class="font-['Marcellus',serif] text-lg sm:text-2xl font-semibold tracking-wide text-parlourDark leading-tight">SHREE KULASWAMINI</h1>
+                    <p class="text-[8px] sm:text-[10px] font-medium tracking-[0.2em] text-parlourGold uppercase">BEAUTY PARLOUR & BRIDAL STUDIO</p>
+                </div>
+            </a>
+            <nav class="flex items-center">
+                <ul class="flex items-center gap-2 sm:gap-6 text-xs sm:text-sm font-medium tracking-wide">
+                    <li><a href="index.html" class="px-3 py-2 rounded-md text-parlourWine font-semibold transition-all duration-200">Home</a></li>
+                    <li><a href="services.html" class="px-3 py-2 rounded-md text-stone-600 hover:text-parlourWine hover:bg-stone-50 transition-all duration-200">Services Menu</a></li>
+                    <li><a href="appointment.html" class="px-4 py-2 sm:py-2.5 rounded-full bg-parlourWine text-white hover:bg-parlourDark shadow-sm hover:shadow transition-all duration-200 text-center text-[10px] sm:text-xs uppercase font-semibold tracking-wider">Book Now</a></li>
+                </ul>
+            </nav>
         </div>
     </header>
 
-    <!-- PREMIUM NAVIGATION BAR -->
-    <nav>
-        <ul>
-            <li><a href="index.html" class="nav-link active">Home</a></li>
-            <li><a href="services.html" class="nav-link">Services Menu</a></li>
-            <li><a href="appointment.html" class="nav-link">Book Appointment</a></li>
-        </ul>
-    </nav>
+    <!-- PREMIUM AUTO-SLIDING ACCORDION CAROUSEL WITH DESCRIPTION BADGES -->
+    <section class="max-w-7xl mx-auto my-6 px-4 sm:px-6 lg:px-8 overflow-hidden relative">
+        <div class="relative w-full h-[220px] sm:h-[400px] md:h-[480px] rounded-2xl overflow-hidden shadow-xl bg-stone-900">
+            
+            <!-- Fixed Slider Track Architecture -->
+            <div class="flex h-full w-[300%]" style="animation: premiumSliderAnimation 15s infinite ease-in-out;">
+                
+                <!-- Frame 1: Hydra Facial Details -->
+                <div class="w-1/3 h-full relative flex-shrink-0">
+                    <img src="images/slider1.jpg" alt="Hydra Facial Treatment" class="w-full h-full object-cover block">
+                    <!-- Clean Bottom-Left Description Accent Panel -->
+                    <div class="absolute bottom-4 left-4 sm:bottom-6 sm:left-6 bg-stone-950/70 backdrop-blur-md px-4 py-2 sm:px-5 sm:py-3 rounded-xl border border-white/10 max-w-[260px] sm:max-w-sm text-white">
+                        <h3 class="font-['Marcellus',serif] text-sm sm:text-xl font-medium tracking-wide text-amber-400">The Ultimate Glow</h3>
+                        <p class="font-['Poppins',sans-serif] text-[10px] sm:text-xs text-stone-300 mt-1 leading-relaxed">Hydra Facial Special • Only ₹1,799 <span class="line-through text-stone-500 ml-1.5">₹3,000</span></p>
+                    </div>
+                </div>
 
-    <!-- AUTOMATIC BANNER SLIDER -->
-    <section class="hero-slider-wrapper">
-        <div class="main-slider">
-            <div class="hero-slide">
-                <img src="images/slider1.jpg" alt="Hydra Facial Treatment">
-                <div class="hero-overlay-text">
-                    <h2>The Ultimate Glow</h2>
-                    <p>Hydra Facial Special • Only ₹1,799 <span class="slider-strike">₹3,000</span></p>
+                <!-- Frame 2: Bridal Jewellery Details -->
+                <div class="w-1/3 h-full relative flex-shrink-0">
+                    <img src="images/slider2.jpg" alt="Exclusive Bridal Jewellery" class="w-full h-full object-cover block">
+                    <!-- Clean Bottom-Left Description Accent Panel -->
+                    <div class="absolute bottom-4 left-4 sm:bottom-6 sm:left-6 bg-stone-950/70 backdrop-blur-md px-4 py-2 sm:px-5 sm:py-3 rounded-xl border border-white/10 max-w-[260px] sm:max-w-sm text-white">
+                        <h3 class="font-['Marcellus',serif] text-sm sm:text-xl font-medium tracking-wide text-amber-400">Bridal Elegance</h3>
+                        <p class="font-['Poppins',sans-serif] text-[10px] sm:text-xs text-stone-300 mt-1 leading-relaxed">Premium Rental Jewellery Available For Your Special Day</p>
+                    </div>
                 </div>
-            </div>
-            <div class="hero-slide">
-                <img src="images/slider2.jpg" alt="Exclusive Bridal Jewellery">
-                <div class="hero-overlay-text">
-                    <h2>Bridal Elegance</h2>
-                    <p>Premium Rental Jewellery Available For Your Special Day</p>
+
+                <!-- Frame 3: Pedicure Combo Details -->
+                <div class="w-1/3 h-full relative flex-shrink-0">
+                    <img src="images/slider3.jpg" alt="Luxury Pedicure Care" class="w-full h-full object-cover block">
+                    <!-- Clean Bottom-Left Description Accent Panel -->
+                    <div class="absolute bottom-4 left-4 sm:bottom-6 sm:left-6 bg-stone-950/70 backdrop-blur-md px-4 py-2 sm:px-5 sm:py-3 rounded-xl border border-white/10 max-w-[260px] sm:max-w-sm text-white">
+                        <h3 class="font-['Marcellus',serif] text-sm sm:text-xl font-medium tracking-wide text-amber-400">Pamper Your Feet</h3>
+                        <p class="font-['Poppins',sans-serif] text-[10px] sm:text-xs text-stone-300 mt-1 leading-relaxed">Deluxe Manicure + Pedicure Combo • Just ₹400</p>
+                    </div>
                 </div>
-            </div>
-            <div class="hero-slide">
-                <img src="images/slider3.jpg" alt="Luxury Pedicure Care">
-                <div class="hero-overlay-text">
-                    <h2>Pamper Your Feet</h2>
-                    <p>Deluxe Manicure + Pedicure Combo • Just ₹400</p>
-                </div>
+
             </div>
         </div>
     </section>
 
-    <!-- EXCLUSIVE OFFERS GRID -->
-    <section class="curated-offers-section">
-        <div class="section-heading-block">
-            <span class="gold-tagline">LIMITED PERIOD DEALS</span>
-            <h2>Exclusive Ongoing Offers</h2>
-            <div class="gold-divider"></div>
+    <!-- Unified Sliding Engine Injection -->
+    <style>
+        @keyframes premiumSliderAnimation {
+            0%, 28% { transform: translateX(0); }
+            33%, 61% { transform: translateX(-33.3333%); }
+            66%, 95% { transform: translateX(-66.6666%); }
+            100% { transform: translateX(0); }
+        }
+    </style>
+
+    <!-- EXCLUSIVE OFFERS GRID WITH RESTORED BUTTONS -->
+    <section class="max-w-7xl mx-auto my-16 px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+            <span class="text-xs font-semibold tracking-widest text-parlourGold uppercase block mb-2">LIMITED PERIOD DEALS</span>
+            <h2 class="font-['Marcellus',serif] text-3xl sm:text-4xl text-parlourDark font-medium">Exclusive Ongoing Offers</h2>
+            <div class="w-16 h-0.5 bg-parlourGold mx-auto mt-4"></div>
         </div>
 
-        <div class="offers-grid-six">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
             <!-- Box 1 -->
-            <div class="premium-card">
-                <div class="card-img-container">
-                    <img src="images/offer1.jpg" alt="Hydra Facial">
-                </div>
-                <div class="card-info">
-                    <h3>Hair Spa</h3>
-                    <p class="card-price">₹1,799 <span class="card-old-price">₹3,000</span></p>
+            <div class="bg-white rounded-xl overflow-hidden border border-stone-100 shadow-sm flex flex-col justify-between hover:shadow-md transition-all duration-300">
+                <div class="h-56 overflow-hidden"><img src="images/offer1.jpg" alt="Hair Spa" class="w-full h-full object-cover"></div>
+                <div class="p-5">
+                    <div class="flex justify-between items-center mb-4">
+                        <h3 class="font-['Marcellus',serif] text-lg text-parlourDark font-medium">Hair Spa</h3>
+                        <p class="text-parlourWine font-bold">₹1,799 <span class="text-xs text-stone-400 line-through font-normal ml-1">₹3,000</span></p>
+                    </div>
+                    <a href="appointment.html" class="block w-full text-center bg-parlourWine text-white text-xs uppercase font-semibold tracking-wider py-2.5 rounded-lg hover:bg-parlourDark transition-all duration-200">Book Now</a>
                 </div>
             </div>
             <!-- Box 2 -->
-            <div class="premium-card">
-                <div class="card-img-container">
-                    <img src="images/offer2.jpg" alt="Jewellery Rental">
-                </div>
-                <div class="card-info">
-                    <h3>Fruit Facial</h3>
-                    <p class="card-price">₹500</p>
+            <div class="bg-white rounded-xl overflow-hidden border border-stone-100 shadow-sm flex flex-col justify-between hover:shadow-md transition-all duration-300">
+                <div class="h-56 overflow-hidden"><img src="images/offer2.jpg" alt="Fruit Facial" class="w-full h-full object-cover"></div>
+                <div class="p-5">
+                    <div class="flex justify-between items-center mb-4">
+                        <h3 class="font-['Marcellus',serif] text-lg text-parlourDark font-medium">Fruit Facial</h3>
+                        <p class="text-parlourWine font-bold">₹500</p>
+                    </div>
+                    <a href="appointment.html" class="block w-full text-center bg-parlourWine text-white text-xs uppercase font-semibold tracking-wider py-2.5 rounded-lg hover:bg-parlourDark transition-all duration-200">Book Now</a>
                 </div>
             </div>
             <!-- Box 3 -->
-            <div class="premium-card">
-                <div class="card-img-container">
-                    <img src="images/offer3.jpg" alt="Mani-Pedi Combo">
-                </div>
-                <div class="card-info">
-                    <h3>Nail Art Combo</h3>
-                    <p class="card-price">₹400</p>
+            <div class="bg-white rounded-xl overflow-hidden border border-stone-100 shadow-sm flex flex-col justify-between hover:shadow-md transition-all duration-300">
+                <div class="h-56 overflow-hidden"><img src="images/offer3.jpg" alt="Nail Art" class="w-full h-full object-cover"></div>
+                <div class="p-5">
+                    <div class="flex justify-between items-center mb-4">
+                        <h3 class="font-['Marcellus',serif] text-lg text-parlourDark font-medium">Nail Art Combo</h3>
+                        <p class="text-parlourWine font-bold">₹400</p>
+                    </div>
+                    <a href="appointment.html" class="block w-full text-center bg-parlourWine text-white text-xs uppercase font-semibold tracking-wider py-2.5 rounded-lg hover:bg-parlourDark transition-all duration-200">Book Now</a>
                 </div>
             </div>
             <!-- Box 4 -->
-            <div class="premium-card">
-                <div class="card-img-container">
-                    <img src="images/offer4.jpg" alt="Party Makeup">
-                </div>
-                <div class="card-info">
-                    <h3>Threading Combo</h3>
-                    <p class="card-price">₹200</p>
+            <div class="bg-white rounded-xl overflow-hidden border border-stone-100 shadow-sm flex flex-col justify-between hover:shadow-md transition-all duration-300">
+                <div class="h-56 overflow-hidden"><img src="images/offer4.jpg" alt="Threading" class="w-full h-full object-cover"></div>
+                <div class="p-5">
+                    <div class="flex justify-between items-center mb-4">
+                        <h3 class="font-['Marcellus',serif] text-lg text-parlourDark font-medium">Threading Combo</h3>
+                        <p class="text-parlourWine font-bold">₹200</p>
+                    </div>
+                    <a href="appointment.html" class="block w-full text-center bg-parlourWine text-white text-xs uppercase font-semibold tracking-wider py-2.5 rounded-lg hover:bg-parlourDark transition-all duration-200">Book Now</a>
                 </div>
             </div>
             <!-- Box 5 -->
-            <div class="premium-card">
-                <div class="card-img-container">
-                    <img src="images/offer5.jpg" alt="Hair Spa">
-                </div>
-                <div class="card-info">
-                    <h3>Pre-Bridal Pack</h3>
-                    <p class="card-price">₹1,500</p>
+            <div class="bg-white rounded-xl overflow-hidden border border-stone-100 shadow-sm flex flex-col justify-between hover:shadow-md transition-all duration-300">
+                <div class="h-56 overflow-hidden"><img src="images/offer5.jpg" alt="Pre-Bridal" class="w-full h-full object-cover"></div>
+                <div class="p-5">
+                    <div class="flex justify-between items-center mb-4">
+                        <h3 class="font-['Marcellus',serif] text-lg text-parlourDark font-medium">Pre-Bridal Pack</h3>
+                        <p class="text-parlourWine font-bold">₹1,500</p>
+                    </div>
+                    <a href="appointment.html" class="block w-full text-center bg-parlourWine text-white text-xs uppercase font-semibold tracking-wider py-2.5 rounded-lg hover:bg-parlourDark transition-all duration-200">Book Now</a>
                 </div>
             </div>
             <!-- Box 6 -->
-            <div class="premium-card">
-                <div class="card-img-container">
-                    <img src="images/offer6.jpg" alt="Fruit Facial">
-                </div>
-                <div class="card-info">
-                    <h3>Party Makeup</h3>
-                    <p class="card-price">₹1,000</p>
+            <div class="bg-white rounded-xl overflow-hidden border border-stone-100 shadow-sm flex flex-col justify-between hover:shadow-md transition-all duration-300">
+                <div class="h-56 overflow-hidden"><img src="images/offer6.jpg" alt="Party Makeup" class="w-full h-full object-cover"></div>
+                <div class="p-5">
+                    <div class="flex justify-between items-center mb-4">
+                        <h3 class="font-['Marcellus',serif] text-lg text-parlourDark font-medium">Party Makeup</h3>
+                        <p class="text-parlourWine font-bold">₹1,000</p>
+                    </div>
+                    <a href="appointment.html" class="block w-full text-center bg-parlourWine text-white text-xs uppercase font-semibold tracking-wider py-2.5 rounded-lg hover:bg-parlourDark transition-all duration-200">Book Now</a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- NEW EXPERIENCE & LOCATION SECTION -->
-    <section class="experience-brand-section">
-        <div class="experience-box">
-            <span class="gold-tagline">OUR STUDIO</span>
-            <h2>Experience Luxury at Panchvati</h2>
-            <div class="gold-divider-left"></div>
-            <p class="experience-desc">
-                Step into a world of rejuvenation and world-class beauty services right in your neighborhood. 
-                At Shree Kulaswamini Beauty Parlour, we blend elite expertise with premium global cosmetic products 
-                to highlight your inner brilliance. Whether it's your dream wedding makeup, advanced clinical skincare treatments, 
-                or a relaxing spa escape, our dedicated studio is designed to celebrate you.
+    <!-- LOCATION SECTION -->
+    <section class="max-w-7xl mx-auto my-16 px-4 sm:px-6 lg:px-8 bg-stone-900 rounded-2xl text-white overflow-hidden shadow-lg">
+        <div class="p-8 sm:p-12 md:max-w-3xl">
+            <span class="text-xs font-semibold tracking-widest text-parlourGold uppercase block mb-2">OUR STUDIO</span>
+            <h2 class="font-['Marcellus',serif] text-3xl font-medium mb-4">Experience Luxury at Panchvati</h2>
+            <div class="w-12 h-0.5 bg-parlourGold mb-6"></div>
+            <p class="text-sm text-stone-300 leading-relaxed mb-6">
+                Step into a world of rejuvenation and world-class beauty services right in your neighborhood. At Shree Kulaswamini Beauty Parlour, we blend elite expertise with premium global cosmetic products to highlight your inner brilliance.
             </p>
-            <p class="location-details-text">
+            <p class="text-xs text-parlourGold font-medium mb-6">
                 📍 <strong>Find Us At:</strong> Bungalow - 1, Gopal Nagar Chowk, Amrutdham, Panchavati, Nashik 422003
             </p>
-            <a href="https://maps.google.com/?q=SHREE+KULASWAMINI+BEAUTY+PARLOUR+Gopal+Nagar+Amrutdham+Nashik" target="_blank" class="luxury-map-btn">Navigate via Google Maps</a>
+            <a href="https://maps.google.com/?q=SHREE+KULASWAMINI+BEAUTY+PARLOUR+Gopal+Nagar+Amrutdham+Nashik" target="_blank" class="inline-block border border-parlourGold text-parlourGold hover:bg-parlourGold hover:text-white text-xs uppercase tracking-wider font-semibold px-6 py-3 rounded-lg transition-all duration-300">Navigate via Google Maps</a>
         </div>
     </section>
 
-    <!-- PREMIUM FOOTER -->
-    <footer>
-        <div class="footer-grid">
-            <div class="footer-col">
-                <h3>Contact & Booking</h3>
-                <p>Sandhya Jagdale</p>
-                <p class="footer-phone">📞 +91 98817 56643</p>
+    <!-- FOOTER -->
+    <footer class="bg-stone-900 text-stone-400 border-t border-stone-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 grid grid-cols-1 sm:grid-cols-2 gap-10">
+            <div>
+                <h3 class="text-white font-semibold text-sm uppercase tracking-wider mb-3">Contact & Booking</h3>
+                <p class="text-stone-300 text-sm">Sandhya Jagdale</p>
+                <p class="text-parlourGold font-semibold mt-2 text-sm">📞 +91 98817 56643</p>
             </div>
-            <div class="footer-col">
-                <h3>Our Sanctuary Address</h3>
-                <p>Sree Kulaswamini Bungalow - 1,</p>
-                <p>Gopal Nagar Chowk, Amrutdham,</p>
-                <p>Panchavati, Nashik - 422003</p>
+            <div>
+                <h3 class="text-white font-semibold text-sm uppercase tracking-wider mb-3">Our Sanctuary Address</h3>
+                <p class="text-stone-300 text-sm leading-relaxed">Sree Kulaswamini Bungalow - 1,<br>Gopal Nagar Chowk, Amrutdham,<br>Panchavati, Nashik - 422003</p>
             </div>
         </div>
-        <div class="footer-copyright">
-            &copy; 2026 Shree Kulaswamini Beauty Parlour. Designed with Elegance. All Rights Reserved.
+        <div class="text-center text-xs text-stone-600 py-6 border-t border-stone-800/50">
+            &copy; 2026 Shree Kulaswamini Beauty Parlour. All Rights Reserved.
         </div>
     </footer>
 
+    <!-- INTERACTIVE ENGINE -->
+    <script>
+        window.addEventListener('scroll', function() {
+            const header = document.getElementById('mainHeader');
+            const container = document.getElementById('headerContainer');
+            if (window.scrollY > 20) {
+                header.classList.add('bg-white/95', 'backdrop-blur-md', 'shadow-md', 'border-stone-200/80');
+                header.classList.remove('border-transparent');
+                container.classList.remove('h-20');
+                container.classList.add('h-16');
+            } else {
+                header.classList.remove('bg-white/95', 'backdrop-blur-md', 'shadow-md', 'border-stone-200/80');
+                header.classList.add('border-transparent');
+                container.classList.remove('h-16');
+                container.classList.add('h-20');
+            }
+        });
+    </script>
 </body>
 </html>
