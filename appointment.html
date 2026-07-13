@@ -43,8 +43,6 @@
     <!-- PREMIUM RESPONSIVE HEADER ENGINE -->
     <header id="mainHeader" class="sticky top-0 z-50 w-full bg-white transition-all duration-300 border-b border-stone-200/60 shadow-sm">
         <div class="max-w-7xl mx-auto px-4 py-3 md:py-0 md:h-20 flex flex-col md:flex-row items-center justify-between gap-3 md:gap-0 transition-all duration-300" id="headerContainer">
-            
-            <!-- BRAND IDENTITY BLOCK -->
             <a href="index.html" class="flex items-center gap-3 group text-center md:text-left">
                 <img src="images/logo.png" alt="Shree Kulaswamini Logo" class="h-10 sm:h-12 w-auto object-contain transition-transform duration-500 group-hover:scale-105">
                 <div class="flex flex-col text-left">
@@ -52,8 +50,6 @@
                     <p class="text-[8px] sm:text-[9px] font-medium tracking-[0.18em] text-parlourGold uppercase">BEAUTY PARLOUR & BRIDAL STUDIO</p>
                 </div>
             </a>
-
-            <!-- NAVIGATION ITEMS BAR -->
             <nav class="w-full md:w-auto flex justify-center items-center border-t border-stone-100 pt-2.5 md:pt-0 md:border-none">
                 <ul class="flex items-center gap-3 sm:gap-6 text-xs sm:text-sm font-medium tracking-wide">
                     <li><a href="index.html" class="px-2.5 py-1.5 rounded-md text-stone-600 hover:text-parlourWine hover:bg-stone-50 transition-all duration-200">Home</a></li>
@@ -64,7 +60,7 @@
         </div>
     </header>
 
-    <!-- APPOINTMENT SECTION -->
+    <!-- FORM DOCK WINDOW -->
     <section class="max-w-3xl mx-auto my-10 px-4 sm:px-6">
         <div class="text-center mb-10">
             <span class="text-xs font-semibold tracking-widest text-parlourGold uppercase block mb-2">RESERVE A SLOT</span>
@@ -88,24 +84,80 @@
                 </div>
 
                 <div>
-                    <label class="block text-xs font-semibold uppercase tracking-wider text-stone-600 mb-2">Services (You can choose multiple services)</label>
+                    <label class="block text-xs font-semibold uppercase tracking-wider text-stone-600 mb-2">Services Selector (Choose items to add to your list)</label>
                     <select id="serviceSelect" onchange="addServiceToBucket()" class="w-full px-4 py-3 bg-stone-50/50 border border-stone-200 rounded-lg focus:border-parlourWine focus:bg-white outline-none text-sm transition-all duration-200">
                         <option value="" disabled selected>Select a treatment to add...</option>
-                        <option value="Hydra Facial Special|1799">Hydra Facial Special (Real Price: ₹3000 | Offer: ₹1799)</option>
-                        <option value="Jewellery Rental Booking|0">Jewellery Rental Consultation (Free)</option>
-                        <option value="Manicure + Pedicure Combo|400">Manicure + Pedicure Combo (Offer: ₹400)</option>
-                        <option value="Celebration / Party Makeup|1500">Celebration / Party Makeup (₹1500)</option>
-                        <option value="Intense Hair Spa Combo|999">Intense Hair Spa Combo (₹999)</option>
-                        <option value="Organic Fruit Facial|600">Organic Fruit Facial (₹600)</option>
+                        
+                        <!-- Facials Group -->
+                        <optgroup label="1. Facials Menu">
+                            <option value="Fruit Facial|400">Fruit Facial (₹400)</option>
+                            <option value="Mix Fruit Facial|450">Mix Fruit Facial (₹450)</option>
+                            <option value="Gold Facial|500">Gold Facial (₹500)</option>
+                            <option value="Diamond Facial|600">Diamond Facial (₹600)</option>
+                            <option value="Vitamin C Whitening Facial|750">Vitamin C Whitening Facial (₹750)</option>
+                            <option value="Wine Facial|800">Wine Facial (₹800)</option>
+                            <option value="O3+ 7-Step Facial|1500">O3+ 7-Step Facial (₹1500)</option>
+                            <option value="O3+ 10-Step Facial|1800">O3+ 10-Step Facial (₹1800)</option>
+                            <option value="Korean Glass Skin Facial|1100">Korean Glass Skin Facial (₹1100)</option>
+                            <option value="Hydra Booster Facial|999">Hydra Booster Facial (₹999)</option>
+                            <option value="Platinum Facial|1250">Platinum Facial (₹1250)</option>
+                            <option value="Chocolate Facial|849">Chocolate Facial (₹849)</option>
+                            <option value="De-Tan Facial|950">De-Tan Facial (₹950)</option>
+                            <option value="Whitening De-Tan Facial|800">Whitening De-Tan Facial (₹800)</option>
+                        </optgroup>
+
+                        <!-- Cleanups Group -->
+                        <optgroup label="2. Cleanups Menu">
+                            <option value="Herbal Cleanup|200">Herbal Cleanup (₹200)</option>
+                            <option value="Mix Herbal Cleanup|250">Mix Herbal Cleanup (₹250)</option>
+                            <option value="Gold Cleanup|300">Gold Cleanup (₹300)</option>
+                            <option value="Diamond Cleanup|350">Diamond Cleanup (₹350)</option>
+                            <option value="De-Tan Cleanup|400">De-Tan Cleanup (₹400)</option>
+                            <option value="Vitamin C Whitening Cleanup|500">Vitamin C Whitening Cleanup (₹500)</option>
+                            <option value="Korean Glass Skin Cleanup|849">Korean Glass Skin Cleanup (₹849)</option>
+                            <option value="O3+ Cleanup|999">O3+ Cleanup (₹999)</option>
+                        </optgroup>
+
+                        <!-- Hair Care & Washing -->
+                        <optgroup label="3. Hair Washing & Massages">
+                            <option value="Plain Hair Wash|100">Plain Hair Wash (₹100)</option>
+                            <option value="Hair Wash with Mask|150">Hair Wash with Mask (₹150)</option>
+                            <option value="Head Massage with Oil|200">Head Massage with Oil (₹200)</option>
+                            <option value="Head Massage with Hair Pack|300">Head Massage with Hair Pack (₹300)</option>
+                        </optgroup>
+
+                        <!-- Hair Spas & Chemical Treatments -->
+                        <optgroup label="4. Hair Spas & Advanced Treatments">
+                            <option value="Herbal Hair Spa|500">Herbal Hair Spa (₹500)</option>
+                            <option value="Keratin Hair Spa|700">Keratin Hair Spa (₹700)</option>
+                            <option value="L'Oréal Professional Hair Spa|900">L'Oréal Professional Hair Spa (₹900)</option>
+                            <option value="Keratin Treatment|1999">Keratin Treatment (Starts from ₹1,999 *Varies by length)</option>
+                            <option value="Hair Smoothing|2999">Hair Smoothing (Starts from ₹2,999 *Varies by length)</option>
+                            <option value="Hair Global Colour|500">Hair Global Colour (Starts from ₹500 *Varies by brand)</option>
+                            <option value="Highlights Colour|1500">Highlights Colour (Starts from ₹1,500 *Varies by density)</option>
+                            <option value="Hair Styling |250">Hair Styling (Starts from ₹250 *Varies by style)</option>
+                        </optgroup>
+
+                        <!-- Makeup & Body Artistry -->
+                        <optgroup label="5. Makeup & Styling Specialties">
+                            <option value="Simple Party Makeup|1000">Simple Party Makeup (₹1000)</option>
+                            <option value="Premium Bridal Makeup|3000">Premium Bridal Makeup (Starts from ₹3,000)</option>
+                            <option value="Face De-Tan Pack|150">Face De-Tan Pack (₹150)</option>
+                            <option value="Hand Bleach Pack|200">Hand Bleach Pack (₹200)</option>
+                            <option value="Half-Leg Bleach Pack|200">Half-Leg Bleach Pack (₹200)</option>
+                            <option value="Hand Polishing|300">Hand Polishing (₹300)</option>
+                            <option value="Leg Polishing|300">Leg Polishing (₹300)</option>
+                            <option value="Luxury Manicure & Pedicure Combo|0">Luxury Manicure & Pedicure Combo (Price on demand)</option>
+                        </optgroup>
                     </select>
                 </div>
 
-                <!-- DYNAMIC CHOSEN SERVICES BUCKET -->
+                <!-- SELECTED ITEMS CART -->
                 <div class="bg-rose-50/30 border border-dashed border-parlourWine/40 rounded-xl p-5">
                     <div class="text-xs font-semibold tracking-wider text-parlourDark uppercase mb-4">Selected Treatments</div>
                     <div class="flex flex-col md:flex-row gap-6 justify-between items-start">
                         <ul id="selectedItemsList" class="w-full flex-1">
-                            <li class="text-stone-400 text-xs italic" id="emptyBucketMsg">No services added yet. Select from the dropdown above.</li>
+                            <li class="text-stone-400 text-xs italic" id="emptyBucketMsg">No services added yet. Select from the dropdown list menu.</li>
                         </ul>
                         <div class="w-full md:w-auto min-w-[140px] bg-white border border-parlourGold/50 rounded-lg p-4 text-center shadow-sm">
                             <div class="text-[10px] text-parlourGold font-semibold uppercase tracking-widest">Total Price</div>
@@ -162,26 +214,8 @@
         </div>
     </footer>
 
-    <!-- INTERACTIVE SCRIPT CONTROLS -->
+    <!-- DYNAMIC JAVASCRIPT CAPTURE CONTROLS -->
     <script>
-        window.addEventListener('scroll', function() {
-            const header = document.getElementById('mainHeader');
-            const container = document.getElementById('headerContainer');
-            if (window.scrollY > 15) {
-                header.classList.add('bg-white/95', 'backdrop-blur-md', 'shadow-md');
-                if (window.innerWidth >= 768) {
-                    container.classList.remove('h-20');
-                    container.classList.add('h-16');
-                }
-            } else {
-                header.classList.remove('bg-white/95', 'backdrop-blur-md', 'shadow-md');
-                if (window.innerWidth >= 768) {
-                    container.classList.remove('h-16');
-                    container.classList.add('h-20');
-                }
-            }
-        });
-
         const dateInput = document.getElementById('bookingDate');
         const today = new Date();
         const yyyy = today.getFullYear();
@@ -222,7 +256,7 @@
             let runningTotal = 0;
 
             if (chosenServices.length === 0) {
-                listContainer.innerHTML = `<li style="color: #aaa; font-size: 13px; font-style: italic;" id="emptyBucketMsg">No services added yet. Select from the dropdown above.</li>`;
+                listContainer.innerHTML = `<li style="color: #aaa; font-size: 13px; font-style: italic;" id="emptyBucketMsg">No services added yet. Select from the dropdown list menu.</li>`;
                 totalDisplay.textContent = "0";
                 return;
             }
@@ -232,7 +266,7 @@
                 const li = document.createElement('li');
                 li.className = "selected-item-row";
                 li.innerHTML = `
-                    <span class="text-stone-700 font-medium">${service.name} (₹${service.price})</span>
+                    <span class="text-stone-700 font-medium">${service.name} ${service.price > 0 ? `(₹${service.price})` : "(*Price On Demand)"}</span>
                     <button type="button" class="text-red-500 hover:text-red-700 font-bold ml-2 text-lg outline-none" onclick="removeServiceFromBucket(${index})">×</button>
                 `;
                 listContainer.appendChild(li);
@@ -241,7 +275,7 @@
             totalDisplay.textContent = runningTotal;
         }
 
-        const parlourNumber = "918975914625";
+        const parlourNumber = "919881756643";
 
         function getStorageKey(date, slot) {
             return `booking_${date}_${slot.replace(/ /g, "_")}`;
@@ -276,7 +310,7 @@
                 finalPriceTotal += item.price;
             });
 
-            const yesText = encodeURIComponent(`Yes, you can come in this slot! The previous request was canceled. Your booking is confirmed for ${selectedDate} at ${selectedSlot}! ✨`);
+            const yesText = encodeURIComponent(`Yes, you can come in this slot! Your booking is confirmed for ${selectedDate} at ${selectedSlot}! ✨`);
             const noText = encodeURIComponent(`Sorry, that slot is completely full. 🔴 Please select another open slot time on our website structure!`);
             
             const salonYesLink = `https://wa.me/91${phone}?text=${yesText}`;
@@ -290,9 +324,9 @@
                                    `📅 *Requested Date:* ${selectedDate}\n` +
                                    `⏰ *Target Slot:* ${selectedSlot}\n\n` +
                                    `-----------------------------\n` +
-                                   `📢 *SALON CHAT ACTIONS (Tap a link below to reply):*\n\n` +
+                                   `📢 *SALON CHAT ACTIONS:\n\n` +
                                    ` 🟢 *ALLOW ACCESS (YES):*\n${salonYesLink}\n\n` +
-                                   ` 🔴 *DECLINE (NO/BOOK NEXT):*\n${salonNoLink}`;
+                                   ` 🔴 *DECLINE (NO):*\n${salonNoLink}`;
 
             window.open(`https://api.whatsapp.com/send?phone=${parlourNumber}&text=${encodeURIComponent(inquiryMessage)}`, '_blank');
         }
@@ -309,7 +343,6 @@
             
             if (currentBookings >= 2) {
                 submitBtn.style.display = "none"; 
-                
                 slotError.innerHTML = `
                     🔒 This slot is temporarily full on the website grid.<br><br>
                     <button type="button" onclick="window.sendInquiryToSalon()" class="w-full bg-amber-600 text-white border-none py-3 px-4 rounded-lg font-semibold cursor-pointer text-xs uppercase tracking-wider transition-colors duration-200 hover:bg-amber-700">
@@ -325,7 +358,6 @@
 
         function sendToWhatsApp(event) {
             event.preventDefault();
-
             const name = document.getElementById('fullName').value;
             const phone = document.getElementById('phoneNumber').value;
             const selectedDate = dateInput.value;
@@ -335,9 +367,7 @@
             if (phone.length !== 10 || isNaN(phone)) {
                 phoneError.textContent = "❌ Please enter a valid 10-digit phone number.";
                 return;
-            } else {
-                phoneError.textContent = "";
-            }
+            } else { phoneError.textContent = ""; }
 
             if (chosenServices.length === 0) {
                 alert("Please add at least one treatment before submitting booking.");
@@ -345,14 +375,12 @@
             }
 
             if (!checkSlotAvailability()) return;
-
             incrementBookingCount(selectedDate, selectedSlot);
-            checkSlotAvailability(); 
 
             let serviceDetailsString = "";
             let finalPriceTotal = 0;
             chosenServices.forEach((item, index) => {
-                serviceDetailsString += `${index + 1}. ${item.name} (₹${item.price})\n`;
+                serviceDetailsString += `${index + 1}. ${item.name} ${item.price > 0 ? `(₹${item.price})` : "(On Demand)"}\n`;
                 finalPriceTotal += item.price;
             });
 
@@ -367,6 +395,34 @@
 
             window.open(`https://api.whatsapp.com/send?phone=${parlourNumber}&text=${encodeURIComponent(message)}`, '_blank');
         }
+
+        // --- AUTOMATIC INTERCEPTION ROUTER HOOK ---
+        window.addEventListener('DOMContentLoaded', () => {
+            const savedItemData = localStorage.getItem('salonRedirectSelection');
+            if(savedItemData) {
+                try {
+                    const item = JSON.parse(savedItemData);
+                    if(item && item.name) {
+                        // Dynamically drop item data safely into active tracking array
+                        chosenServices.push({ name: item.name, price: parseInt(item.price) || 0 });
+                        renderBucket();
+                    }
+                } catch(e) { console.error("Error capturing custom data transfer:", e); }
+                localStorage.removeItem('salonRedirectSelection'); // Instantly wipe clean
+            }
+        });
+
+        window.addEventListener('scroll', function() {
+            const header = document.getElementById('mainHeader');
+            const container = document.getElementById('headerContainer');
+            if (window.scrollY > 15) {
+                header.classList.add('bg-white/95', 'backdrop-blur-md', 'shadow-md');
+                if (window.innerWidth >= 768) { container.classList.replace('h-20', 'h-16'); }
+            } else {
+                header.classList.remove('bg-white/95', 'backdrop-blur-md', 'shadow-md');
+                if (window.innerWidth >= 768) { container.classList.replace('h-16', 'h-20'); }
+            }
+        });
     </script>
 </body>
 </html>

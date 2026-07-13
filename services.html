@@ -47,71 +47,86 @@
         </div>
     </header>
 
-    <!-- SERVICES MENU GRID -->
-    <section class="max-w-7xl mx-auto my-12 sm:my-16 px-4 sm:px-6 lg:px-8">
+    <!-- SERVICES MENU EXPANSION SECTION -->
+    <section class="max-w-5xl mx-auto my-12 px-4 sm:px-6">
         <div class="text-center mb-10">
-            <span class="text-xs font-semibold tracking-widest text-parlourGold uppercase block mb-1">OUR SERVICES</span>
-            <h2 class="font-['Marcellus',serif] text-2xl sm:text-4xl text-parlourDark font-medium">Signature Treatment Packages</h2>
-            <div class="w-12 h-0.5 bg-parlourGold mx-auto mt-3"></div>
+            <span class="text-xs font-semibold tracking-widest text-parlourGold uppercase block mb-1">OUR SANCTUARY</span>
+            <h2 class="font-['Marcellus',serif] text-2xl sm:text-4xl text-parlourDark font-medium">Signature Treatment Categories</h2>
+            <p class="text-stone-500 text-xs mt-2 font-light">Click on any luxury category banner below to view specific treatment pricing sheets.</p>
+            <div class="w-12 h-0.5 bg-parlourGold mx-auto mt-4"></div>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-            <!-- Category 1 -->
-            <div class="bg-white rounded-xl overflow-hidden border border-stone-100 shadow-sm flex flex-col justify-between hover:shadow-md transition-all duration-300">
-                <div>
-                    <div class="h-48 sm:h-52 overflow-hidden"><img src="images/offer6.jpg" alt="Bridal Makeup" class="w-full h-full object-cover"></div>
-                    <div class="p-5">
-                        <h3 class="font-['Marcellus',serif] text-lg text-parlourDark font-semibold mb-3">Bridal & Festive Glow</h3>
-                        <ul class="space-y-2 text-xs text-stone-500 mb-4 animate-fade-in">
-                            <li>• HD Bridal Makeup Packages</li>
-                            <li>• Festive & Traditional Party Looks</li>
-                            <li>• Hairstyling & Saree Draping</li>
-                            <li>• Pre-Bridal Skin Care Cleanups</li>
-                        </ul>
+        <!-- ACCORDION PARENT GRID CONTAINER -->
+        <div class="space-y-4">
+
+            <!-- CATEGORY CARD 1: FACIALS -->
+            <div class="bg-white rounded-xl border border-stone-200/60 shadow-sm overflow-hidden transition-all duration-300">
+                <button onclick="toggleAccordion('facialPanel')" class="w-full text-left flex items-center justify-between p-4 sm:p-6 outline-none hover:bg-stone-50/50 transition-colors duration-200">
+                    <div class="flex items-center gap-4">
+                        <img src="images/offer2.jpg" alt="Facial" class="w-12 h-12 rounded-lg object-cover shadow-sm">
+                        <div>
+                            <h3 class="font-['Marcellus',serif] text-base sm:text-xl font-medium text-parlourDark">Facials</h3>
+                            <p class="text-[11px] text-parlourGold uppercase font-semibold tracking-wider mt-0.5">Starting from ₹400</p>
+                        </div>
                     </div>
-                </div>
-                <div class="p-5 pt-0">
-                    <a href="appointment.html" class="block w-full text-center bg-parlourWine text-white text-xs uppercase font-semibold tracking-wider py-2.5 rounded-lg hover:bg-parlourDark transition-all duration-200">Book Now</a>
+                    <span id="facialPanel-arrow" class="text-stone-400 text-xl font-light transform transition-transform duration-200">▼</span>
+                </button>
+                <div id="facialPanel" class="hidden border-t border-stone-100 bg-stone-50/30 px-4 py-2 sm:px-6">
+                    <div class="divide-y divide-stone-100" id="facialList"></div>
                 </div>
             </div>
 
-            <!-- Category 2 -->
-            <div class="bg-white rounded-xl overflow-hidden border border-stone-100 shadow-sm flex flex-col justify-between hover:shadow-md transition-all duration-300">
-                <div>
-                    <div class="h-48 sm:h-52 overflow-hidden"><img src="images/offer2.jpg" alt="Skincare" class="w-full h-full object-cover"></div>
-                    <div class="p-5">
-                        <h3 class="font-['Marcellus',serif] text-lg text-parlourDark font-semibold mb-3">Skincare & Facials</h3>
-                        <ul class="space-y-2 text-xs text-stone-500 mb-4">
-                            <li>• Advanced Hydra Facial Glow</li>
-                            <li>• Organic Herbal & Fruit Facials</li>
-                            <li>• De-Tan & Deep Cleansing Packs</li>
-                            <li>• Threading (Eyebrows & Upper Lip)</li>
-                        </ul>
+            <!-- CATEGORY CARD 2: CLEANUPS -->
+            <div class="bg-white rounded-xl border border-stone-200/60 shadow-sm overflow-hidden transition-all duration-300">
+                <button onclick="toggleAccordion('cleanupPanel')" class="w-full text-left flex items-center justify-between p-4 sm:p-6 outline-none hover:bg-stone-50/50 transition-colors duration-200">
+                    <div class="flex items-center gap-4">
+                        <img src="images/cleanup.jpg" alt="Cleanup" class="w-12 h-12 rounded-lg object-cover shadow-sm">
+                        <div>
+                            <h3 class="font-['Marcellus',serif] text-base sm:text-xl font-medium text-parlourDark">Cleanups</h3>
+                            <p class="text-[11px] text-parlourGold uppercase font-semibold tracking-wider mt-0.5">Starting from ₹200</p>
+                        </div>
                     </div>
-                </div>
-                <div class="p-5 pt-0">
-                    <a href="appointment.html" class="block w-full text-center bg-parlourWine text-white text-xs uppercase font-semibold tracking-wider py-2.5 rounded-lg hover:bg-parlourDark transition-all duration-200">Book Now</a>
+                    <span id="cleanupPanel-arrow" class="text-stone-400 text-xl font-light transform transition-transform duration-200">▼</span>
+                </button>
+                <div id="cleanupPanel" class="hidden border-t border-stone-100 bg-stone-50/30 px-4 py-2 sm:px-6">
+                    <div class="divide-y divide-stone-100" id="cleanupList"></div>
                 </div>
             </div>
 
-            <!-- Category 3 -->
-            <div class="bg-white rounded-xl overflow-hidden border border-stone-100 shadow-sm flex flex-col justify-between hover:shadow-md transition-all duration-300">
-                <div>
-                    <div class="h-48 sm:h-52 overflow-hidden"><img src="images/offer1.jpg" alt="Hair Spa" class="w-full h-full object-cover"></div>
-                    <div class="p-5">
-                        <h3 class="font-['Marcellus',serif] text-lg text-parlourDark font-semibold mb-3">Hair Artistry & Spa</h3>
-                        <ul class="space-y-2 text-xs text-stone-500 mb-4">
-                            <li>• Deep Nourishing Hair Spas</li>
-                            <li>• Trending Haircuts & Styling</li>
-                            <li>• Global Hair Coloring & Highlights</li>
-                            <li>• Smoothening & Straightening</li>
-                        </ul>
+            <!-- CATEGORY CARD 3: HAIR CARE, SPAS & ADVANCED TREATMENT PACKS -->
+            <div class="bg-white rounded-xl border border-stone-200/60 shadow-sm overflow-hidden transition-all duration-300">
+                <button onclick="toggleAccordion('hairPanel')" class="w-full text-left flex items-center justify-between p-4 sm:p-6 outline-none hover:bg-stone-50/50 transition-colors duration-200">
+                    <div class="flex items-center gap-4">
+                        <img src="images/offer1.jpg" alt="Hair Spa" class="w-12 h-12 rounded-lg object-cover shadow-sm">
+                        <div>
+                            <h3 class="font-['Marcellus',serif] text-base sm:text-xl font-medium text-parlourDark">Hair Design, Spas & Treatments</h3>
+                            <p class="text-[11px] text-parlourGold uppercase font-semibold tracking-wider mt-0.5">Washing, Massages & Dynamic Length Profiles</p>
+                        </div>
                     </div>
-                </div>
-                <div class="p-5 pt-0">
-                    <a href="appointment.html" class="block w-full text-center bg-parlourWine text-white text-xs uppercase font-semibold tracking-wider py-2.5 rounded-lg hover:bg-parlourDark transition-all duration-200">Book Now</a>
+                    <span id="hairPanel-arrow" class="text-stone-400 text-xl font-light transform transition-transform duration-200">▼</span>
+                </button>
+                <div id="hairPanel" class="hidden border-t border-stone-100 bg-stone-50/30 px-4 py-2 sm:px-6">
+                    <div class="divide-y divide-stone-100" id="hairList"></div>
                 </div>
             </div>
+
+            <!-- CATEGORY CARD 4: STUDIO SPECIALTIES, MAKEUP & BODY CARE -->
+            <div class="bg-white rounded-xl border border-stone-200/60 shadow-sm overflow-hidden transition-all duration-300">
+                <button onclick="toggleAccordion('studioPanel')" class="w-full text-left flex items-center justify-between p-4 sm:p-6 outline-none hover:bg-stone-50/50 transition-colors duration-200">
+                    <div class="flex items-center gap-4">
+                        <img src="images/offer5.jpg" alt="Studio Styling" class="w-12 h-12 rounded-lg object-cover shadow-sm">
+                        <div>
+                            <h3 class="font-['Marcellus',serif] text-base sm:text-xl font-medium text-parlourDark">Makeup, Bleaching & Styling Accent Panels</h3>
+                            <p class="text-[11px] text-parlourGold uppercase font-semibold tracking-wider mt-0.5">Polishing, Bridal Design, & Specialized Skin Drapes</p>
+                        </div>
+                    </div>
+                    <span id="studioPanel-arrow" class="text-stone-400 text-xl font-light transform transition-transform duration-200">▼</span>
+                </button>
+                <div id="studioPanel" class="hidden border-t border-stone-100 bg-stone-50/30 px-4 py-2 sm:px-6">
+                    <div class="divide-y divide-stone-100" id="studioList"></div>
+                </div>
+            </div>
+
         </div>
     </section>
 
@@ -133,22 +148,138 @@
         </div>
     </footer>
 
+    <!-- ENGINE CONTROLS -->
     <script>
+        // Data arrays for dynamic treatment list printing
+        const facials = [
+            { name: "Fruit Facial", price: 400, info: "" },
+            { name: "Mix Fruit Facial", price: 450, info: "" },
+            { name: "Gold Facial", price: 500, info: "" },
+            { name: "Diamond Facial", price: 600, info: "" },
+            { name: "Vitamin C Whitening Facial", price: 750, info: "" },
+            { name: "Wine Facial", price: 800, info: "" },
+            { name: "O3+ 7-Step Facial", price: 1500, info: "" },
+            { name: "O3+ 10-Step Facial", price: 1800, info: "" },
+            { name: "Korean Glass Skin Facial", price: 1100, info: "" },
+            { name: "Hydra Booster Facial", price: 999, info: "" },
+            { name: "Platinum Facial", price: 1250, info: "" },
+            { name: "Chocolate Facial", price: 849, info: "" },
+            { name: "De-Tan Facial", price: 950, info: "" },
+            { name: "Whitening De-Tan Facial", price: 800, info: "" }
+        ];
+
+        const cleanups = [
+            { name: "Herbal Cleanup", price: 200, info: "" },
+            { name: "Mix Herbal Cleanup", price: 250, info: "" },
+            { name: "Gold Cleanup", price: 300, info: "" },
+            { name: "Diamond Cleanup", price: 350, info: "" },
+            { name: "De-Tan Cleanup", price: 400, info: "" },
+            { name: "Vitamin C Whitening Cleanup", price: 500, info: "" },
+            { name: "Korean Glass Skin Cleanup", price: 849, info: "" },
+            { name: "O3+ Cleanup", price: 999, info: "" }
+        ];
+
+        const hairCare = [
+            { name: "Plain Hair Wash", price: 100, info: "" },
+            { name: "Hair Wash with Mask", price: 150, info: "" },
+            { name: "Head Massage with Oil", price: 200, info: "" },
+            { name: "Head Massage with Hair Pack", price: 300, info: "" },
+            { name: "Herbal Hair Spa", price: 500, info: "" },
+            { name: "Keratin Hair Spa", price: 700, info: "" },
+            { name: "L'Oréal Professional Hair Spa", price: 900, info: "" },
+            { name: "Keratin Treatment", price: 1999, info: "⚠️ Increase on length" },
+            { name: "Hair Smoothing", price: 2999, info: "⚠️ Increase on hair length" },
+            { name: "Hair Global Colour", price: 500, info: "⚠️ Increase based on product brand selection" },
+            { name: "Highlights Colour", price: 1500, info: "⚠️ Increase based on client style density" }
+        ];
+
+        const studioSpecialties = [
+            { name: "Hand Polishing", price: 300, info: "" },
+            { name: "Leg Polishing", price: 300, info: "" },
+            { name: "Face De-Tan Pack", price: 150, info: "" },
+            { name: "Hand Bleach Pack", price: 200, info: "" },
+            { name: "Half-Leg Bleach Pack", price: 200, info: "" },
+            { name: "Simple Party Makeup", price: 1000, info: "" },
+            { name: "Premium Bridal Makeup", price: 3000, info: "⚠️ Base price varies on packaging packages" },
+            { name: "Hair Styling", price: 250, info: "⚠️ Varies by design style request" },
+            { name: "Luxury Manicure & Pedicure Combo", price: null, info: "📌 Price determined per personalized treatment choice" }
+        ];
+
+        // Renders specific tables dynamically inside matching wrappers
+        function buildList(items, wrapperId) {
+            const container = document.getElementById(wrapperId);
+            container.innerHTML = "";
+            
+            items.forEach(item => {
+                const row = document.createElement('div');
+                row.className = "flex flex-col sm:flex-row sm:items-center justify-between py-3 gap-2 sm:gap-0 font-['Poppins',sans-serif]";
+                
+                // Left Column: Identification labels
+                const leftDiv = document.createElement('div');
+                leftDiv.className = "flex flex-col";
+                leftDiv.innerHTML = `<span class="text-xs sm:text-sm font-medium text-stone-700">${item.name}</span>`;
+                if(item.info) {
+                    leftDiv.innerHTML += `<span class="text-[10px] text-amber-600 font-medium mt-0.5">${item.info}</span>`;
+                }
+                
+                // Right Column: Price boards & click router components
+                const rightDiv = document.createElement('div');
+                rightDiv.className = "flex items-center justify-between sm:justify-end gap-6";
+                
+                let priceLabel = item.price !== null ? `₹${item.price}` : "On Demand";
+                if(item.info && item.price !== null) priceLabel = `Starting from ₹${item.price}`;
+                
+                rightDiv.innerHTML = `<span class="text-xs sm:text-sm font-bold text-parlourWine min-w-[90px] text-left sm:text-right">${priceLabel}</span>`;
+                
+                const btn = document.createElement('button');
+                btn.className = "bg-stone-100 hover:bg-parlourWine hover:text-white text-stone-700 text-[10px] uppercase font-semibold tracking-wider px-3 py-1.5 rounded transition-all duration-200 outline-none";
+                btn.textContent = "Book Now";
+                btn.onclick = () => autoRouteToBooking(item.name, item.price);
+                
+                rightDiv.appendChild(btn);
+                row.appendChild(leftDiv);
+                row.appendChild(rightDiv);
+                container.appendChild(row);
+            });
+        }
+
+        // Passes chosen selection safely using localStorage before redirecting routing context
+        function autoRouteToBooking(name, price) {
+            const transferPayload = { name: name, price: price || 0 };
+            localStorage.setItem('salonRedirectSelection', JSON.stringify(transferPayload));
+            window.location.href = "appointment.html";
+        }
+
+        // Toggles custom hidden sub-panels cleanly
+        function toggleAccordion(panelId) {
+            const panel = document.getElementById(panelId);
+            const arrow = document.getElementById(`${panelId}-arrow`);
+            
+            if(panel.classList.contains('hidden')) {
+                panel.classList.remove('hidden');
+                arrow.style.transform = "rotate(180deg)";
+            } else {
+                panel.classList.add('hidden');
+                arrow.style.transform = "rotate(0deg)";
+            }
+        }
+
+        // Initialize script builders
+        buildList(facials, 'facialList');
+        buildList(cleanups, 'cleanupList');
+        buildList(hairCare, 'hairList');
+        buildList(studioSpecialties, 'studioList');
+
+        // Sticky header morph tracking metrics
         window.addEventListener('scroll', function() {
             const header = document.getElementById('mainHeader');
             const container = document.getElementById('headerContainer');
             if (window.scrollY > 15) {
                 header.classList.add('bg-white/95', 'backdrop-blur-md', 'shadow-md');
-                if (window.innerWidth >= 768) {
-                    container.classList.remove('h-20');
-                    container.classList.add('h-16');
-                }
+                if (window.innerWidth >= 768) { container.classList.replace('h-20', 'h-16'); }
             } else {
                 header.classList.remove('bg-white/95', 'backdrop-blur-md', 'shadow-md');
-                if (window.innerWidth >= 768) {
-                    container.classList.remove('h-16');
-                    container.classList.add('h-20');
-                }
+                if (window.innerWidth >= 768) { container.classList.replace('h-16', 'h-20'); }
             }
         });
     </script>
